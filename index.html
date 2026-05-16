@@ -10,57 +10,81 @@
   <body>
     <nav class="navbar">
       <div class="nav-container">
-        <div class="logo">Portfolio</div>
+        <div class="logo">HT</div>
         <ul class="nav-menu">
           <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#profil">Profil</a></li>
+          <li><a href="#apropos">À propos</a></li>
           <li><a href="#competences">Compétences</a></li>
           <li><a href="#projets">Projets</a></li>
+          <li><a href="#experience">Expérience</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="menu-toggle" id="menuToggle">☰</button>
       </div>
     </nav>
 
     <section id="accueil" class="hero">
+      <div class="availability-badge">✓ Disponible pour de nouveaux projets</div>
       <div class="hero-content">
-        <h1>Henock Tumonakiese</h1>
-        <p class="hero-subtitle">Développeur Full Stack | Expert PHP/Laravel | Architecte d'APIs | DevOps</p>
-        <a href="#profile" class="cta-button">Découvrir l'équipe</a>
+        <div class="hero-title">
+          <p class="hero-greeting">Bonjour, je suis</p>
+          <h1 class="hero-name">Henock Tumonakiese</h1>
+        </div>
+        <p class="hero-subtitle">Développeur Full Stack • Expert PHP/Laravel • Architecte d'APIs</p>
+        <p class="hero-description">Je conçois des solutions numériques intelligentes et robustes, spécialisées en backend PHP et architectures d'APIs scalables.</p>
+        <div class="hero-buttons">
+          <a href="#projets" class="cta-button primary">
+            <span>Voir mes projets</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="#contact" class="cta-button secondary">
+            <span>Me contacter</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Années d'expérience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Projets réalisés</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Satisfaction clients</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="profil" class="team-section">
+    <section id="apropos" class="about-section">
       <div class="container">
+        <div class="section-label">À propos</div>
         <h2 class="section-title">Qui suis-je ?</h2>
-        <div class="profile-grid">
-          <div class="profile-card">
-            <div class="team-image">
-              <img src="#" alt="Henock Tumonakiese">
+        <div class="about-content">
+          <div class="about-text">
+            <p>Développeur Full Stack passionné avec une expertise approfondie en backend PHP et Laravel. Je suis spécialisé dans la création d'APIs robustes et scalables qui résoudent les vrais problèmes.</p>
+            <p>Fort de plusieurs années d'expérience, j'ai eu l'opportunité de travailler sur des projets variés en environnement startup, ce qui m'a permis de développer une approche pragmatique du développement logiciel.</p>
+            <p>Ma mission : construire des solutions techniques solides, maintenables et performantes qui créent réellement de la valeur.</p>
+            <div class="about-highlights">
+              <div class="highlight">
+                <span class="highlight-icon">💻</span>
+                <span class="highlight-text">Code propre et maintenable</span>
+              </div>
+              <div class="highlight">
+                <span class="highlight-icon">⚡</span>
+                <span class="highlight-text">Solutions performantes et évolutives</span>
+              </div>
+              <div class="highlight">
+                <span class="highlight-icon">🎯</span>
+                <span class="highlight-text">Approche orientée problème réel</span>
+              </div>
             </div>
-            <div class="team-info">
-              <h3>Henock Tumonakiese</h3>
-              <p class="role">Full Stack Developer | DevOps Expert</p>
-              <p class="description">
-                Développeur passionné avec une expertise approfondie en backend PHP et Laravel. 
-                Spécialisé dans la création d'APIs robustes et scalables. Expérience complète en 
-                développement Full Stack avec React.js et React Native. Maîtrise les pratiques 
-                modernes de CI/CD et gestion de versions avec Git/GitHub/GitLab.
-              </p>
-              <div class="skills-tags">
-                <span class="tag">PHP</span>
-                <span class="tag">Laravel</span>
-                <span class="tag">React</span>
-                <span class="tag">React Native</span>
-                <span class="tag">SQL/MySQL</span>
-                <span class="tag">APIs REST</span>
-                <span class="tag">DevOps</span>
-                <span class="tag">Git/GitHub</span>
-              </div>
-              <div class="social-links">
-                <a href="https://github.com/hnc450" class="social-link" target="_blank">GitHub</a>
-                <a href="https://gitlab.com/hnc450" class="social-link" target="_blank">GitLab</a>
-                <a href="mailto:henoctumonakiese@gmail.com" class="social-link">Email</a>
-              </div>
+          </div>
+          <div class="about-image">
+            <div class="placeholder-image">
+              <span>Photo</span>
             </div>
           </div>
         </div>
@@ -69,37 +93,101 @@
 
     <section id="competences" class="skills-section">
       <div class="container">
-        <h2 class="section-title">Nos Compétences</h2>
+        <div class="section-label">Compétences</div>
+        <h2 class="section-title">Mon expertise technique</h2>
         <div class="skills-grid">
-          <div class="skill-category">
-            <h3>Front-End</h3>
-            <ul>
-              <li>HTML5 / CSS3</li>
-              <li>JavaScript / TypeScript</li>
-              <li>React</li>
-              <li>Responsive Design</li>
-              <li>Bootstrap</li>
-            </ul>
+          <div class="skill-card">
+            <div class="skill-icon">🔧</div>
+            <h3>Développement Backend</h3>
+            <div class="skill-items">
+              <span class="skill-item">PHP / Laravel</span>
+              <span class="skill-item">APIs REST</span>
+              <span class="skill-item">Architecture backend</span>
+              <span class="skill-item">Authentification</span>
+            </div>
           </div>
-          <div class="skill-category">
-            <h3>Back-End</h3>
-            <ul>
-              <li>Php / Laravel</li>
-              <li>REST APIs</li>
-              <li>Mysql / MariaDB</li>
-              <li>Authentication</li>
-              <li>Server Management</li>
-            </ul>
+          <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <h3>Développement Frontend</h3>
+            <div class="skill-items">
+              <span class="skill-item">HTML5 / CSS3</span>
+              <span class="skill-item">JavaScript / TypeScript</span>
+              <span class="skill-item">React</span>
+              <span class="skill-item">Responsive Design</span>
+            </div>
           </div>
-          <div class="skill-category">
-            <h3>Outils & Méthodes</h3>
-            <ul>
-              <li>Git / GitHub</li>
-              <li>GitLab</li>
-              <li>GitHub Actions</li>
-              <li>Docker</li>
-              <li>CI/CD</li>
-            </ul>
+          <div class="skill-card">
+            <div class="skill-icon">📱</div>
+            <h3>Développement Mobile</h3>
+            <div class="skill-items">
+              <span class="skill-item">React Native</span>
+              <span class="skill-item">Cross-platform</span>
+              <span class="skill-item">Performance</span>
+              <span class="skill-item">UX Mobile</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🗄️</div>
+            <h3>Bases de données</h3>
+            <div class="skill-items">
+              <span class="skill-item">MySQL / MariaDB</span>
+              <span class="skill-item">PostgreSQL</span>
+              <span class="skill-item">Query optimization</span>
+              <span class="skill-item">Database design</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🔄</div>
+            <h3>DevOps & Outils</h3>
+            <div class="skill-items">
+              <span class="skill-item">Git / GitHub</span>
+              <span class="skill-item">GitLab</span>
+              <span class="skill-item">Docker</span>
+              <span class="skill-item">CI/CD</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">⚙️</div>
+            <h3>Server Management</h3>
+            <div class="skill-items">
+              <span class="skill-item">Linux / Ubuntu</span>
+              <span class="skill-item">Nginx / Apache</span>
+              <span class="skill-item">Deployment</span>
+              <span class="skill-item">System Admin</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="experience-section">
+      <div class="container">
+        <div class="section-label">Expérience</div>
+        <h2 class="section-title">Mon parcours professionnel</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3>Développeur Full Stack Senior</h3>
+              <p class="company">Startup Tech – 2023 à présent</p>
+              <p class="description">Leadership technique sur des projets d'APIs complexes. Architecture et développement de solutions scalables avec PHP/Laravel et React.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3>Développeur Full Stack</h3>
+              <p class="company">Agence Web – 2021 à 2023</p>
+              <p class="description">Développement complet d'applications web, gestion de bases de données, et déploiement en production. Collaboration avec des équipes de 5-10 personnes.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3>Développeur Backend Junior</h3>
+              <p class="company">Startup Innovation – 2020 à 2021</p>
+              <p class="description">Développement d'APIs REST, maintenance de bases de données, et support technique. Première expérience en environnement startup agile.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -107,76 +195,166 @@
 
     <section id="projets" class="projects-section">
       <div class="container">
-        <h2 class="section-title">Projets Récents</h2>
+        <div class="section-label">Projets</div>
+        <h2 class="section-title">Mes réalisations</h2>
+        
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="tous">Tous</button>
+          <button class="filter-btn" data-filter="backend">Backend & API</button>
+          <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+        </div>
+
         <div class="projects-grid">
-          <div class="project-card">
+          <article class="project-card" data-category="backend">
             <div class="project-image">
-              <img src="https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Projet E-commerce">
+              <img src="https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Système de gestion d'APIs">
+              <div class="project-overlay">
+                <a href="#" class="project-link" title="Voir le projet">🔗</a>
+                <a href="https://github.com/hnc450" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
+              </div>
             </div>
             <div class="project-content">
+              <span class="project-category">Backend</span>
+              <h3>Système de gestion d'APIs</h3>
+              <p>Architecture robuste d'APIs REST avec authentification JWT, versioning et documentation automatique. Gestion complète des requêtes asynchrones.</p>
+              <div class="project-tags">
+                <span class="tag">PHP</span>
+                <span class="tag">Laravel</span>
+                <span class="tag">APIs REST</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="fullstack">
+            <div class="project-image">
+              <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Plateforme E-commerce">
+              <div class="project-overlay">
+                <a href="#" class="project-link" title="Voir le projet">🔗</a>
+                <a href="https://github.com/hnc450" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">Full Stack</span>
               <h3>Plateforme E-commerce</h3>
-              <p>Application de vente en ligne complète avec panier, paiement sécurisé et gestion des commandes.</p>
+              <p>Application de vente en ligne complète avec panier, paiement sécurisé (Stripe), gestion des commandes et panneau d'administration.</p>
               <div class="project-tags">
                 <span class="tag">React</span>
-                <span class="tag">Node.js</span>
+                <span class="tag">Laravel</span>
                 <span class="tag">Stripe</span>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="project-card">
+          <article class="project-card" data-category="fullstack">
             <div class="project-image">
-              <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Application Mobile">
-            </div>
-            <div class="project-content">
-              <h3>Application de Gestion de Tâches</h3>
-              <p>Interface intuitive pour organiser et suivre des projets avec collaboration en temps réel.</p>
-              <div class="project-tags">
-                <span class="tag">Vue.js</span>
-                <span class="tag">Firebase</span>
-                <span class="tag">CSS</span>
+              <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Site Vitrine Restaurant">
+              <div class="project-overlay">
+                <a href="#" class="project-link" title="Voir le projet">🔗</a>
+                <a href="https://github.com/hnc450" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
               </div>
             </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image">
-              <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Site Vitrine">
-            </div>
             <div class="project-content">
+              <span class="project-category">Full Stack</span>
               <h3>Site Vitrine Restaurant</h3>
-              <p>Design moderne et élégant avec système de réservation en ligne et menu interactif.</p>
+              <p>Design moderne et élégant avec système de réservation en ligne, menu interactif et gestion des commandes pour emporter.</p>
               <div class="project-tags">
                 <span class="tag">HTML</span>
                 <span class="tag">CSS</span>
                 <span class="tag">JavaScript</span>
               </div>
             </div>
-          </div>
+          </article>
+
+          <article class="project-card" data-category="mobile">
+            <div class="project-image">
+              <img src="https://images.pexels.com/photos/3631430/pexels-photo-3631430.jpeg?auto=compress&cs=tinysrgb&w=600" alt="App Gestion Tâches">
+              <div class="project-overlay">
+                <a href="#" class="project-link" title="Voir le projet">🔗</a>
+                <a href="https://github.com/hnc450" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">Mobile</span>
+              <h3>App Gestion de Tâches</h3>
+              <p>Interface intuitive pour organiser et suivre des projets avec collaboration en temps réel, notifications et synchronisation cloud.</p>
+              <div class="project-tags">
+                <span class="tag">React Native</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">Mobile</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="backend">
+            <div class="project-image">
+              <img src="https://images.pexels.com/photos/1633340/pexels-photo-1633340.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Microservices Architecture">
+              <div class="project-overlay">
+                <a href="#" class="project-link" title="Voir le projet">🔗</a>
+                <a href="https://github.com/hnc450" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">Backend</span>
+              <h3>Architecture Microservices</h3>
+              <p>Système distribué avec services indépendants, API Gateway, gestion d'événements et déploiement avec Docker/Kubernetes.</p>
+              <div class="project-tags">
+                <span class="tag">Docker</span>
+                <span class="tag">Microservices</span>
+                <span class="tag">DevOps</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="fullstack">
+            <div class="project-image">
+              <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dashboard Analytics">
+              <div class="project-overlay">
+                <a href="#" class="project-link" title="Voir le projet">🔗</a>
+                <a href="https://github.com/hnc450" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">Full Stack</span>
+              <h3>Dashboard Analytics</h3>
+              <p>Tableau de bord interactif avec visualisations en temps réel, export de rapports, et analyse de données avec graphiques dynamiques.</p>
+              <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">Chart.js</span>
+                <span class="tag">Analytics</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="contact" class="contact-section">
       <div class="container">
-        <h2 class="section-title">Contactez-nous</h2>
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Travaillons ensemble</h2>
+        <p class="section-subtitle">Vous avez un projet en tête ? Contactez-moi pour discuter de vos besoins et comment je pourrais vous aider à les réaliser.</p>
         <div class="contact-content">
           <div class="contact-info">
-            <h3>Travaillons ensemble</h3>
-            <p>Vous avez un projet en tête ? N'hésitez pas à me contacter pour discuter de vos besoins et comment je pourrais vous aider à les réaliser.</p>
-            <div class="contact-details">
-              <div class="contact-item">
-                <strong>Email:</strong>
-                <span>henoctumonakiese@gmail.com</span>
-              </div>
-              <div class="contact-item">
-                <strong>Téléphone:</strong>
-                <span>+243 896500709</span>
-              </div>
-              <div class="contact-item">
-                <strong>Localisation:</strong>
-                <span>Kinshasa, RDC</span>
-              </div>
+            <div class="contact-method">
+              <span class="contact-icon">✉️</span>
+              <h3>Email</h3>
+              <a href="mailto:henoctumonakiese@gmail.com">henoctumonakiese@gmail.com</a>
+            </div>
+            <div class="contact-method">
+              <span class="contact-icon">📱</span>
+              <h3>Téléphone</h3>
+              <a href="tel:+243896500709">+243 896500709</a>
+            </div>
+            <div class="contact-method">
+              <span class="contact-icon">📍</span>
+              <h3>Localisation</h3>
+              <p>Kinshasa, RDC</p>
+            </div>
+            <div class="social-links">
+              <a href="https://github.com/hnc450" class="social-link" target="_blank">GitHub</a>
+              <a href="https://gitlab.com/hnc450" class="social-link" target="_blank">GitLab</a>
+              <a href="https://www.linkedin.com/in/henoc-tumonakiese-9192a1395 " class="social-link" target="_blank">LinkedIn</a>
             </div>
           </div>
           <form class="contact-form">
@@ -185,6 +363,9 @@
             </div>
             <div class="form-group">
               <input type="email" placeholder="Votre email" required>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Sujet du message" required>
             </div>
             <div class="form-group">
               <textarea placeholder="Votre message" rows="5" required></textarea>
