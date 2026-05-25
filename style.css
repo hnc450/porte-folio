@@ -1052,6 +1052,16 @@ body {
 @media (max-width: 768px) {
   .nav-menu {
     display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg-white);
+    padding: var(--spacing-md);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(226, 232, 240, 0.7);
+    z-index: 999;
   }
 
   .menu-toggle {
