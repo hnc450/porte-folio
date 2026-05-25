@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Henock Tumonakiese - Développeur Full Stack Expert</title>
+    <title>Henock Tumonakiese - Développeur Backend Expert</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -30,7 +30,7 @@
           <p class="hero-greeting">Bonjour, je suis</p>
           <h1 class="hero-name">Henock Tumonakiese</h1>
         </div>
-        <p class="hero-subtitle">Développeur Full Stack • Expert PHP/Laravel • Architecte d'APIs</p>
+        <p class="hero-subtitle">Développeur Backend • Expert PHP/Laravel • Compétences Frontend</p>
         <p class="hero-description">Je conçois des solutions numériques intelligentes et robustes, spécialisées en backend PHP et architectures d'APIs scalables.</p>
         <div class="hero-buttons">
           <a href="#projets" class="cta-button primary">
@@ -64,7 +64,7 @@
         <h2 class="section-title">Qui suis-je ?</h2>
         <div class="about-content">
           <div class="about-text">
-            <p>Développeur Full Stack passionné avec une expertise approfondie en backend PHP et Laravel. Je suis spécialisé dans la création d'APIs robustes et scalables qui résoudent les vrais problèmes.</p>
+            <p>Développeur Backend passionné avec une expertise approfondie en PHP et Laravel. Je suis spécialisé dans la création d'APIs robustes et scalables qui résolvent les vrais problèmes. Je possède également une solide compétence en développement frontend (React, HTML5, CSS3, JavaScript).</p>
             <p>Fort de plusieurs années d'expérience, j'ai eu l'opportunité de travailler sur des projets variés en environnement startup, ce qui m'a permis de développer une approche pragmatique du développement logiciel.</p>
             <p>Ma mission : construire des solutions techniques solides, maintenables et performantes qui créent réellement de la valeur.</p>
             <div class="about-highlights">
@@ -116,16 +116,7 @@
               <span class="skill-item">Responsive Design</span>
             </div>
           </div>
-          <div class="skill-card">
-            <div class="skill-icon">📱</div>
-            <h3>Développement Mobile</h3>
-            <div class="skill-items">
-              <span class="skill-item">React Native</span>
-              <span class="skill-item">Cross-platform</span>
-              <span class="skill-item">Performance</span>
-              <span class="skill-item">UX Mobile</span>
-            </div>
-          </div>
+
           <div class="skill-card">
             <div class="skill-icon">🗄️</div>
             <h3>Bases de données</h3>
@@ -168,7 +159,7 @@
           <div class="timeline-item">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
-              <h3>Développeur Full Stack Senior</h3>
+              <h3>Développeur Backend Senior</h3>
               <p class="company">Startup Tech – 2023 à présent</p>
               <p class="description">Leadership technique sur des projets d'APIs complexes. Architecture et développement de solutions scalables avec PHP/Laravel et React.</p>
             </div>
@@ -176,9 +167,9 @@
           <div class="timeline-item">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
-              <h3>Développeur Full Stack</h3>
+              <h3>Développeur Backend</h3>
               <p class="company">Agence Web – 2021 à 2023</p>
-              <p class="description">Développement complet d'applications web, gestion de bases de données, et déploiement en production. Collaboration avec des équipes de 5-10 personnes.</p>
+              <p class="description">Développement d'applications web, gestion de bases de données, et déploiement en production. Collaboration avec des équipes de 5-10 personnes.</p>
             </div>
           </div>
           <div class="timeline-item">
@@ -201,8 +192,8 @@
         <div class="project-filters">
           <button class="filter-btn active" data-filter="tous">Tous</button>
           <button class="filter-btn" data-filter="backend">Backend & API</button>
+          <button class="filter-btn" data-filter="frontend">Frontend</button>
           <button class="filter-btn" data-filter="fullstack">Full Stack</button>
-          <button class="filter-btn" data-filter="mobile">Mobile</button>
         </div>
 
         <div class="projects-grid">
@@ -226,62 +217,63 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="fullstack">
+          <article class="project-card" data-category="frontend">
             <div class="project-image">
-              <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Plateforme E-commerce">
+              <img src="images/todolist.png" alt="Ma TodoList - Gestionnaire de Tâches">
               <div class="project-overlay">
-                <a href="#" class="project-link" title="Voir le projet">🔗</a>
-                <a href="https://github.com/hnc450" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
+                <a href="https://tasktodolissts.netlify.app/" class="project-link" title="Voir le projet">🔗</a>
+                <a href="https://tasktodolissts.netlify.app/" class="project-github" target="_blank" title="Visiter l'app">⭐</a>
               </div>
             </div>
             <div class="project-content">
-              <span class="project-category">Full Stack</span>
-              <h3>Plateforme E-commerce</h3>
-              <p>Application de vente en ligne complète avec panier, paiement sécurisé (Stripe), gestion des commandes et panneau d'administration.</p>
+              <span class="project-category">Frontend</span>
+              <h3>Ma TodoList - Gestionnaire de Tâches</h3>
+              <p>Application de gestion de tâches interactive avec filtrage en temps réel (Tous, Actifs, Complétés), persistance des données via LocalStorage et interface responsive. Démo d'une application React TypeScript avec gestion d'état efficace.</p>
               <div class="project-tags">
                 <span class="tag">React</span>
-                <span class="tag">Laravel</span>
-                <span class="tag">Stripe</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">LocalStorage</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="backend">
+            <div class="project-image">
+              <img src="images/ghost.png" alt="Ghost - Framework PHP">
+              <div class="project-overlay">
+                <a href="https://github.com/hnc450/ghost-composite" class="project-link" title="Voir le projet">🔗</a>
+                <a href="https://github.com/hnc450/ghost-composite" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">Backend</span>
+              <h3>Ghost - Framework PHP Minimaliste</h3>
+              <p>Framework PHP minimaliste et modulaire en développement actif avec architecture MVC complète, système de routing avancé, injection de dépendances via conteneur, QueryBuilder pour gestion intuitives de bases de données, protection CSRF intégrée, gestion des logs avec visualiseur et support des services. Conçu pour bâtir des applications PHP robustes et scalables.</p>
+              <div class="project-tags">
+                <span class="tag">PHP Pur</span>
+                <span class="tag">MVC</span>
+                <span class="tag">Routing</span>
+                <span class="tag">QueryBuilder</span>
               </div>
             </div>
           </article>
 
           <article class="project-card" data-category="fullstack">
             <div class="project-image">
-              <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Site Vitrine Restaurant">
+              <img src="images/protect.png" alt="Protect VIN - Système de vérification de véhicules">
               <div class="project-overlay">
-                <a href="#" class="project-link" title="Voir le projet">🔗</a>
-                <a href="https://github.com/hnc450" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
+                <a href="https://protectvim.com/" class="project-link" title="Voir le projet">🔗</a>
+                <a href="https://protectvim.com/" class="project-github" target="_blank" title="Visiter le site">⭐</a>
               </div>
             </div>
             <div class="project-content">
               <span class="project-category">Full Stack</span>
-              <h3>Site Vitrine Restaurant</h3>
-              <p>Design moderne et élégant avec système de réservation en ligne, menu interactif et gestion des commandes pour emporter.</p>
+              <h3>Protect VIN - Système de Vérification Véhicules</h3>
+              <p>Plateforme complète de vérification d'ADN de véhicules avec recherches croisées instantanées par VIN, plaque d'immatriculation ou informations propriétaire. Génération de rapports PDF certifiés avec intégration API police et assurances.</p>
               <div class="project-tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="mobile">
-            <div class="project-image">
-              <img src="https://images.pexels.com/photos/3631430/pexels-photo-3631430.jpeg?auto=compress&cs=tinysrgb&w=600" alt="App Gestion Tâches">
-              <div class="project-overlay">
-                <a href="#" class="project-link" title="Voir le projet">🔗</a>
-                <a href="https://github.com/hnc450" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
-              </div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Mobile</span>
-              <h3>App Gestion de Tâches</h3>
-              <p>Interface intuitive pour organiser et suivre des projets avec collaboration en temps réel, notifications et synchronisation cloud.</p>
-              <div class="project-tags">
-                <span class="tag">React Native</span>
-                <span class="tag">Firebase</span>
-                <span class="tag">Mobile</span>
+                <span class="tag">PHP</span>
+                <span class="tag">PDF</span>
+                <span class="tag">Mysql</span>
               </div>
             </div>
           </article>
@@ -306,22 +298,23 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="fullstack">
+          <article class="project-card" data-category="backend">
             <div class="project-image">
-              <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dashboard Analytics">
+              <img src="images/mololo.png" alt="Mololo+ - Plateforme Musicale">
               <div class="project-overlay">
-                <a href="#" class="project-link" title="Voir le projet">🔗</a>
-                <a href="https://github.com/hnc450" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
+                <a href="https://mololoplus.com/" class="project-link" title="Voir le projet">🔗</a>
+                <a href="https://mololoplus.com/" class="project-github" target="_blank" title="Visiter le site">⭐</a>
               </div>
             </div>
             <div class="project-content">
-              <span class="project-category">Full Stack</span>
-              <h3>Dashboard Analytics</h3>
-              <p>Tableau de bord interactif avec visualisations en temps réel, export de rapports, et analyse de données avec graphiques dynamiques.</p>
+              <span class="project-category">Backend</span>
+              <h3>Mololo+ - Plateforme Musicale Africaine</h3>
+              <p>Plateforme SaaS complète de gestion de carrière musicale avec SmartLink personnalisé, EPK automatique, système de booking intégré et accès aux opportunités exclusives. Architecture backend MVC PHP avec gestion d'authentification, système de paiement d'abonnement, intégration partenaires et analytics avancées pour 1000+ artistes.</p>
               <div class="project-tags">
-                <span class="tag">React</span>
-                <span class="tag">Chart.js</span>
-                <span class="tag">Analytics</span>
+                <span class="tag">PHP MVC</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">API REST</span>
+                <span class="tag">Système de paiement</span>
               </div>
             </div>
           </article>
@@ -378,7 +371,7 @@
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2025 Henock Tumonakiese - Full Stack Developer. Tous droits réservés.</p>
+        <p>&copy; 2025 Henock Tumonakiese - Backend Developer. Tous droits réservés.</p>
       </div>
     </footer>
 
