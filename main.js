@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // ========== SMOOTH SCROLL NAVIGATION ==========
   const navLinks = document.querySelectorAll('.nav-menu a');
 
+  const navMenu = document.querySelector('.nav-menu');
+
+  const closeMobileMenu = () => {
+    navMenu?.classList.remove('is-open');
+  };
+
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
@@ -15,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
           behavior: 'smooth'
         });
       }
+
+      closeMobileMenu();
     });
   });
 
@@ -84,11 +92,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // ========== MOBILE MENU TOGGLE ==========
   const menuToggle = document.getElementById('menuToggle');
-  const navMenu = document.querySelector('.nav-menu');
-  
-  if (menuToggle) {
+
+  if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', function() {
-      navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+      navMenu.classList.toggle('is-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (
+        navMenu.classList.contains('is-open') &&
+        !navMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+      ) {
+        closeMobileMenu();
+      }
     });
   }
 });
