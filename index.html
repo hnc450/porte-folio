@@ -1,376 +1,562 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Henock Tumonakiese - Développeur Backend</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="description"
+      content="Portfolio de Henock Tumonakiese, développeur backend spécialisé en PHP/Laravel et architectures d'APIs scalables."
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Henock Tumonakiese — Développeur Backend</title>
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#eef2ff",
+                100: "#e0e7ff",
+                200: "#c7d2fe",
+                300: "#a5b4fc",
+                400: "#818cf8",
+                500: "#6366f1",
+                600: "#4f46e5",
+                700: "#4338ca",
+              },
+              ink: {
+                900: "#0f172a",
+                800: "#1e293b",
+                700: "#334155",
+                500: "#64748b",
+                400: "#94a3b8",
+                200: "#e2e8f0",
+                100: "#f1f5f9",
+                50: "#f8fafc",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            keyframes: {
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(24px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              fadeDown: {
+                "0%": { opacity: "0", transform: "translateY(-16px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+            animation: {
+              fadeUp: "fadeUp 0.8s ease both",
+              fadeDown: "fadeDown 0.8s ease both",
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      html {
+        scroll-padding-top: 5rem;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
   </head>
-  <body>
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="logo">HT</div>
-        <ul class="nav-menu">
-          <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#apropos">À propos</a></li>
-          <li><a href="#competences">Compétences</a></li>
-          <li><a href="#projets">Projets</a></li>
-          <li><a href="#experience">Expérience</a></li>
-          <li><a href="#contact">Contact</a></li>
+
+  <body class="bg-white font-sans text-ink-900 antialiased">
+    <!-- ===== NAVBAR ===== -->
+    <nav class="fixed inset-x-0 top-0 z-50 border-b border-ink-200/70 bg-white/80 backdrop-blur-md">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+        <a
+          href="#accueil"
+          class="bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-xl font-black tracking-tight text-transparent"
+          >HT</a
+        >
+        <ul id="navMenu" class="hidden items-center gap-8 md:flex">
+          <li><a class="nav-link text-sm font-medium text-ink-700 transition hover:text-brand-600" href="#accueil">Accueil</a></li>
+          <li><a class="nav-link text-sm font-medium text-ink-700 transition hover:text-brand-600" href="#apropos">À propos</a></li>
+          <li><a class="nav-link text-sm font-medium text-ink-700 transition hover:text-brand-600" href="#competences">Compétences</a></li>
+          <li><a class="nav-link text-sm font-medium text-ink-700 transition hover:text-brand-600" href="#projets">Projets</a></li>
+          <li><a class="nav-link text-sm font-medium text-ink-700 transition hover:text-brand-600" href="#experience">Expérience</a></li>
+          <li>
+            <a
+              class="nav-link rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700"
+              href="#contact"
+              >Contact</a
+            >
+          </li>
         </ul>
-        <button class="menu-toggle" id="menuToggle">☰</button>
+        <button
+          id="menuToggle"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-ink-200 text-ink-700 md:hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        </button>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="hidden border-t border-ink-200 bg-white md:hidden">
+        <ul class="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3">
+          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50" href="#accueil">Accueil</a></li>
+          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50" href="#apropos">À propos</a></li>
+          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50" href="#competences">Compétences</a></li>
+          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50" href="#projets">Projets</a></li>
+          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50" href="#experience">Expérience</a></li>
+          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-brand-600 hover:bg-ink-50" href="#contact">Contact</a></li>
+        </ul>
       </div>
     </nav>
 
-    <section id="accueil" class="hero">
-      <div class="availability-badge">✓ Disponible pour de nouveaux projets</div>
-      <div class="hero-content">
-        <div class="hero-title">
-          <p class="hero-greeting">Bonjour, je suis</p>
-          <h1 class="hero-name">Henock Tumonakiese</h1>
-        </div>
-        <p class="hero-subtitle">Développeur Backend •  PHP/Laravel • Compétences Frontend</p>
-        <p class="hero-description">Je conçois des solutions numériques intelligentes et robustes, spécialisées en backend PHP et architectures d'APIs scalables.</p>
-        <div class="hero-buttons">
-          <a href="#projets" class="cta-button primary">
-            <span>Voir mes projets</span>
-            <span class="arrow">→</span>
+    <!-- ===== HERO ===== -->
+    <header
+      id="accueil"
+      class="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 px-4 pb-20 pt-28 text-white sm:px-6"
+    >
+      <div class="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-500/20 blur-3xl"></div>
+      <div class="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-brand-500/15 blur-3xl"></div>
+
+      <div class="relative z-10 mx-auto max-w-3xl text-center animate-fadeUp">
+        <span
+          class="mb-8 inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-xs font-semibold text-emerald-300 sm:text-sm"
+        >
+          <span class="h-2 w-2 animate-pulse rounded-full bg-emerald-400"></span>
+          Disponible pour de nouveaux projets
+        </span>
+
+        <p class="mb-3 text-base font-medium tracking-wide text-ink-200/90">Bonjour, je suis</p>
+        <h1 class="text-balance bg-gradient-to-r from-white to-brand-200 bg-clip-text text-4xl font-black leading-tight text-transparent sm:text-6xl lg:text-7xl">
+          Henock Tumonakiese
+        </h1>
+        <p class="mt-5 text-lg font-semibold text-ink-100 sm:text-xl">
+          Développeur Backend · PHP / Laravel · Compétences Frontend
+        </p>
+        <p class="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-ink-200/80 sm:text-lg">
+          Je conçois des solutions numériques intelligentes et robustes, spécialisées en backend PHP
+          et architectures d'APIs scalables.
+        </p>
+
+        <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+          <a
+            href="#projets"
+            class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 px-7 py-3.5 font-bold text-white shadow-xl shadow-brand-600/40 transition hover:-translate-y-1 hover:bg-brand-400 sm:w-auto"
+          >
+            Voir mes projets
+            <span class="transition group-hover:translate-x-1">&rarr;</span>
           </a>
-          <a href="#contact" class="cta-button secondary">
-            <span>Me contacter</span>
+          <a
+            href="#contact"
+            class="inline-flex w-full items-center justify-center rounded-xl border-2 border-white/40 px-7 py-3.5 font-bold text-white transition hover:-translate-y-1 hover:bg-white/10 sm:w-auto"
+          >
+            Me contacter
           </a>
         </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-number">3+</div>
-            <div class="stat-label">Années d'expérience</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">5+</div>
-            <div class="stat-label">Projets réalisés</div>
-          </div>
 
-        
-
-        </div>
-      </div>
-    </section>
-
-    <section id="apropos" class="about-section">
-      <div class="container">
-        <div class="section-label">À propos</div>
-        <h2 class="section-title">Qui suis-je ?</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <p>Développeur Backend passionné avec une expertise approfondie en PHP et Laravel. Je suis spécialisé dans la création d'APIs robustes et scalables qui résolvent les vrais problèmes. Je possède également une solide compétence en développement frontend (React, HTML5, CSS3, JavaScript).</p>
-            <p>Fort de plusieurs années d'expérience, j'ai eu l'opportunité de travailler sur des projets variés en environnement startup, ce qui m'a permis de développer une approche pragmatique du développement logiciel.</p>
-            <p>Ma mission : construire des solutions techniques solides, maintenables et performantes qui créent réellement de la valeur.</p>
-            <div class="about-highlights">
-              <div class="highlight">
-                <span class="highlight-icon">💻</span>
-                <span class="highlight-text">Code propre et maintenable</span>
-              </div>
-              <div class="highlight">
-                <span class="highlight-icon">⚡</span>
-                <span class="highlight-text">Solutions performantes et évolutives</span>
-              </div>
-              <div class="highlight">
-                <span class="highlight-icon">🎯</span>
-                <span class="highlight-text">Approche orientée problème réel</span>
-              </div>
-            </div>
+        <div class="mx-auto mt-14 grid max-w-md grid-cols-2 gap-4">
+          <div class="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur">
+            <div class="text-3xl font-black text-brand-300 sm:text-4xl">3+</div>
+            <div class="mt-1 text-sm text-ink-200/80">Années d'expérience</div>
           </div>
-          <div class="about-image">
-            <div class="placeholder-image">
-              <img src="https://img.magnific.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg?semt=ais_hybrid&w=740&q=80" alt="#">
-              </div>
+          <div class="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur">
+            <div class="text-3xl font-black text-brand-300 sm:text-4xl">6+</div>
+            <div class="mt-1 text-sm text-ink-200/80">Projets réalisés</div>
           </div>
         </div>
       </div>
-    </section>
+    </header>
 
-    <section id="competences" class="skills-section">
-      <div class="container">
-        <div class="section-label">Compétences</div>
-        <h2 class="section-title">Mon expertise technique</h2>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-icon">🔧</div>
-            <h3>Développement Backend</h3>
-            <div class="skill-items">
-              <span class="skill-item">PHP / Laravel</span>
-              <span class="skill-item">APIs REST</span>
-              <span class="skill-item">Architecture backend</span>
-              <span class="skill-item">Authentification</span>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-icon">🎨</div>
-            <h3>Développement Frontend</h3>
-            <div class="skill-items">
-              <span class="skill-item">HTML5 / CSS3</span>
-              <span class="skill-item">JavaScript / TypeScript</span>
-              <span class="skill-item">React</span>
-              <span class="skill-item">Responsive Design</span>
-            </div>
+    <main>
+      <!-- ===== À PROPOS ===== -->
+      <section id="apropos" class="bg-white py-20 sm:py-28">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="text-center">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600">À propos</span>
+            <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Qui suis-je ?</h2>
           </div>
 
-          <div class="skill-card">
-            <div class="skill-icon">🗄️</div>
-            <h3>Bases de données</h3>
-            <div class="skill-items">
-              <span class="skill-item">MySQL / MariaDB</span>
-              <span class="skill-item">PostgreSQL</span>
-              <span class="skill-item">Query optimization</span>
-              <span class="skill-item">Database design</span>
+          <div class="mt-14 grid items-center gap-12 lg:grid-cols-2">
+            <div class="reveal space-y-4 text-base leading-relaxed text-ink-500 sm:text-lg">
+              <p>
+                Développeur Backend passionné avec une expertise approfondie en PHP et Laravel. Je suis
+                spécialisé dans la création d'APIs robustes et scalables qui résolvent les vrais
+                problèmes. Je possède également une solide compétence en développement frontend (React,
+                HTML5, CSS3, JavaScript).
+              </p>
+              <p>
+                Fort de plusieurs années d'expérience, j'ai eu l'opportunité de travailler sur des
+                projets variés en environnement startup, ce qui m'a permis de développer une approche
+                pragmatique du développement logiciel.
+              </p>
+              <div class="grid gap-3 pt-2">
+                <div class="flex items-center gap-3 rounded-xl border-l-4 border-brand-500 bg-ink-50 p-4">
+                  <span class="text-2xl">💻</span>
+                  <span class="font-semibold text-ink-900">Code propre et maintenable</span>
+                </div>
+                <div class="flex items-center gap-3 rounded-xl border-l-4 border-brand-500 bg-ink-50 p-4">
+                  <span class="text-2xl">⚡</span>
+                  <span class="font-semibold text-ink-900">Solutions performantes et évolutives</span>
+                </div>
+                <div class="flex items-center gap-3 rounded-xl border-l-4 border-brand-500 bg-ink-50 p-4">
+                  <span class="text-2xl">🎯</span>
+                  <span class="font-semibold text-ink-900">Approche orientée problème réel</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-icon">🔄</div>
-            <h3>DevOps & Outils</h3>
-            <div class="skill-items">
-              <span class="skill-item">Git / GitHub</span>
-              <span class="skill-item">GitLab</span>
-              <span class="skill-item">Docker</span>
-              <span class="skill-item">CI/CD</span>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-icon">⚙️</div>
-            <h3>Server Management</h3>
-            <div class="skill-items">
-              <span class="skill-item">Linux / Ubuntu</span>
-              <span class="skill-item">Nginx / Apache</span>
-              <span class="skill-item">Deployment</span>
-              <span class="skill-item">System Admin</span>
+
+            <div class="reveal flex justify-center">
+              <div class="relative w-full max-w-sm">
+                <div class="absolute inset-0 -rotate-6 rounded-3xl bg-gradient-to-br from-brand-500 to-brand-700"></div>
+                <img
+                  src="images/avatar.png"
+                  alt="Portrait de Henock Tumonakiese"
+                  class="relative aspect-square w-full rounded-3xl object-cover shadow-2xl"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="experience" class="experience-section">
-      <div class="container">
-        <div class="section-label">Expérience</div>
-        <h2 class="section-title">Mon parcours</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h3>Développeur DevOps</h3>
-              <p class="company">Mokili – 2025 à présent</p>
-              <p class="description">Gestion des infrastructures cloud, déploiement en production, automatisation avec Docker et orchestration. Support technique pour une startup émergente en croissance rapide.</p>
+      <!-- ===== COMPÉTENCES ===== -->
+      <section id="competences" class="bg-gradient-to-b from-ink-50 to-white py-20 sm:py-28">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="text-center">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600">Compétences</span>
+            <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Mon expertise technique</h2>
+          </div>
+
+          <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- card -->
+            <div class="reveal group rounded-2xl border-2 border-ink-200 bg-white p-7 text-center transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/10">
+              <div class="text-4xl">🔧</div>
+              <h3 class="mt-4 text-lg font-bold">Développement Backend</h3>
+              <div class="mt-4 flex flex-col gap-2">
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">PHP / Laravel</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">APIs REST</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Architecture backend</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Authentification</span>
+              </div>
+            </div>
+
+            <div class="reveal group rounded-2xl border-2 border-ink-200 bg-white p-7 text-center transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/10">
+              <div class="text-4xl">🎨</div>
+              <h3 class="mt-4 text-lg font-bold">Développement Frontend</h3>
+              <div class="mt-4 flex flex-col gap-2">
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">HTML5 / CSS3</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">JavaScript / TypeScript</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">React</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Responsive Design</span>
+              </div>
+            </div>
+
+            <div class="reveal group rounded-2xl border-2 border-ink-200 bg-white p-7 text-center transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/10">
+              <div class="text-4xl">🗄️</div>
+              <h3 class="mt-4 text-lg font-bold">Bases de données</h3>
+              <div class="mt-4 flex flex-col gap-2">
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">MySQL / MariaDB</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">PostgreSQL</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Query optimization</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Database design</span>
+              </div>
+            </div>
+
+            <div class="reveal group rounded-2xl border-2 border-ink-200 bg-white p-7 text-center transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/10">
+              <div class="text-4xl">🔄</div>
+              <h3 class="mt-4 text-lg font-bold">DevOps &amp; Outils</h3>
+              <div class="mt-4 flex flex-col gap-2">
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Git / GitHub</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">GitLab</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Docker</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">CI/CD</span>
+              </div>
+            </div>
+
+            <div class="reveal group rounded-2xl border-2 border-ink-200 bg-white p-7 text-center transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/10">
+              <div class="text-4xl">⚙️</div>
+              <h3 class="mt-4 text-lg font-bold">Server Management</h3>
+              <div class="mt-4 flex flex-col gap-2">
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Linux / Ubuntu</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Nginx / Apache</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Deployment</span>
+                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">System Admin</span>
+              </div>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h3>Étudiant en Informatique</h3>
-              <p class="company">UPC – 2023 à 2025</p>
-              <p class="description">Formation académique approfondie en informatique avec focus sur les architectures backend, les APIs et les infrastructures cloud. Projets pratiques en développement web et DevOps.</p>
+        </div>
+      </section>
+
+      <!-- ===== EXPÉRIENCE ===== -->
+      <section id="experience" class="bg-white py-20 sm:py-28">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="text-center">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600">Expérience</span>
+            <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Mon parcours</h2>
+          </div>
+
+          <div class="relative mx-auto mt-14 max-w-2xl">
+            <div class="absolute left-3 top-2 h-full w-0.5 bg-ink-200 sm:left-1/2 sm:-translate-x-1/2"></div>
+
+            <div class="relative mb-10 pl-12 sm:pl-0">
+              <div class="absolute left-1.5 top-2 h-4 w-4 rounded-full border-4 border-white bg-brand-500 ring-4 ring-ink-100 sm:left-1/2 sm:-translate-x-1/2"></div>
+              <div class="reveal rounded-2xl border border-ink-200 bg-ink-50 p-6 sm:mr-[calc(50%+2rem)]">
+                <h3 class="text-lg font-bold">Développeur DevOps</h3>
+                <p class="mt-1 text-xs font-bold uppercase tracking-wide text-brand-600">Mokili — 2025 à présent</p>
+                <p class="mt-3 leading-relaxed text-ink-500">
+                  Gestion des infrastructures cloud, déploiement en production, automatisation avec
+                  Docker et orchestration. Support technique pour une startup émergente en croissance
+                  rapide.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative pl-12 sm:pl-0">
+              <div class="absolute left-1.5 top-2 h-4 w-4 rounded-full border-4 border-white bg-brand-500 ring-4 ring-ink-100 sm:left-1/2 sm:-translate-x-1/2"></div>
+              <div class="reveal rounded-2xl border border-ink-200 bg-ink-50 p-6 sm:ml-[calc(50%+2rem)]">
+                <h3 class="text-lg font-bold">Étudiant en Informatique</h3>
+                <p class="mt-1 text-xs font-bold uppercase tracking-wide text-brand-600">UPC — 2023 à 2025</p>
+                <p class="mt-3 leading-relaxed text-ink-500">
+                  Formation académique approfondie en informatique avec focus sur les architectures
+                  backend, les APIs et les infrastructures cloud. Projets pratiques en développement web
+                  et DevOps.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="projets" class="projects-section">
-      <div class="container">
-        <div class="section-label">Projets</div>
-        <h2 class="section-title">Mes réalisations</h2>
-        
-        <div class="project-filters">
-          <button class="filter-btn active" data-filter="tous">Tous</button>
-          <button class="filter-btn" data-filter="backend">Backend & API</button>
-          <button class="filter-btn" data-filter="frontend">Frontend</button>
-          <button class="filter-btn" data-filter="fullstack">Full Stack</button>
-        </div>
-
-        <div class="projects-grid">
-          
-
-          <article class="project-card" data-category="frontend">
-            <div class="project-image">
-              <img src="images/todolist.png" alt="Ma TodoList - Gestionnaire de Tâches">
-              <div class="project-overlay">
-                <a href="https://tasktodolissts.netlify.app/" class="project-link" title="Voir le projet">🔗</a>
-                <a href="https://tasktodolissts.netlify.app/" class="project-github" target="_blank" title="Visiter l'app">⭐</a>
-              </div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Frontend</span>
-              <h3>Ma TodoList - Gestionnaire de Tâches</h3>
-              <p>Application de gestion de tâches interactive avec filtrage en temps réel (Tous, Actifs, Complétés), persistance des données via LocalStorage et interface responsive. Démo d'une application React TypeScript avec gestion d'état efficace.</p>
-              <div class="project-tags">
-                <span class="tag">React</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">LocalStorage</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="backend">
-            <div class="project-image">
-              <img src="images/ghost.png" alt="Ghost - Framework PHP">
-              <div class="project-overlay">
-                <a href="https://github.com/hnc450/ghost-composite" class="project-link" title="Voir le projet">🔗</a>
-                <a href="https://github.com/hnc450/ghost-composite" class="project-github" target="_blank" title="Voir sur GitHub">⭐</a>
-              </div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Backend</span>
-              <h3>Ghost - Framework PHP Minimaliste</h3>
-              <p>Framework PHP minimaliste et modulaire en développement actif avec architecture MVC complète, système de routing avancé, injection de dépendances via conteneur, QueryBuilder pour gestion intuitives de bases de données, protection CSRF intégrée, gestion des logs avec visualiseur et support des services. Conçu pour bâtir des applications PHP robustes et scalables.</p>
-              <div class="project-tags">
-                <span class="tag">PHP Pur</span>
-                <span class="tag">MVC</span>
-                <span class="tag">Routing</span>
-                <span class="tag">QueryBuilder</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="fullstack">
-            <div class="project-image">
-              <img src="images/protect.png" alt="Protect VIN - Système de vérification de véhicules">
-              <div class="project-overlay">
-                <a href="https://protectvim.com/" class="project-link" title="Voir le projet">🔗</a>
-                <a href="https://protectvim.com/" class="project-github" target="_blank" title="Visiter le site">⭐</a>
-              </div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Full Stack</span>
-              <h3>Protect VIN - Système de Vérification Véhicules</h3>
-              <p>Plateforme complète de vérification d'ADN de véhicules avec recherches croisées instantanées par VIN, plaque d'immatriculation ou informations propriétaire. Génération de rapports PDF certifiés avec intégration API police et assurances.</p>
-              <div class="project-tags">
-                <span class="tag">PHP</span>
-                <span class="tag">PDF</span>
-                <span class="tag">Mysql</span>
-              </div>
-            </div>
-          </article>
-
-
-          <article class="project-card" data-category="backend">
-            <div class="project-image">
-              <img src="images/mololo.png" alt="Mololo+ - Plateforme Musicale">
-              <div class="project-overlay">
-                <a href="https://mololoplus.com/" class="project-link" title="Voir le projet">🔗</a>
-                <a href="https://mololoplus.com/" class="project-github" target="_blank" title="Visiter le site">⭐</a>
-              </div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Backend</span>
-              <h3>Mololo+ - Plateforme Musicale Africaine</h3>
-              <p>Plateforme SaaS complète de gestion de carrière musicale avec SmartLink personnalisé, EPK automatique, système de booking intégré et accès aux opportunités exclusives. Architecture backend MVC PHP avec gestion d'authentification, système de paiement d'abonnement, intégration partenaires et analytics avancées pour 1000+ artistes.</p>
-              <div class="project-tags">
-                <span class="tag">PHP MVC</span>
-                <span class="tag">MySQL</span>
-                <span class="tag">API REST</span>
-                <span class="tag">Système de paiement</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="frontend">
-            <div class="project-image">
-              <img src="images/porte-folio.png" alt="Portfolio Personnel - Henock Tumonakiese">
-              <div class="project-overlay">
-                <a href="https://myprofile-folio.netlify.app/" class="project-link" title="Voir le projet">🔗</a>
-                <a href="https://myprofile-folio.netlify.app/" class="project-github" target="_blank" title="Visiter le site">⭐</a>
-              </div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Frontend</span>
-              <h3>Portfolio Personnel - Henock Tumonakiese</h3>
-              <p>Portfolio personnel interactif et responsive présentant mon profil de développeur Backend avec expertise PHP/Laravel et compétences Frontend. Navigation fluide avec sections détaillées (À propos, Compétences, Expérience, Projets), formulaire de contact fonctionnel et intégration des liens sociaux. Démonstration pratique du web design et de l'interactivité avec vanilla JavaScript.</p>
-              <div class="project-tags">
-                <span class="tag">HTML5</span>
-                <span class="tag">CSS3</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Responsive</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="backend">
-            <div class="project-image">
-              <img src="images/retraiteflow.png" alt="RetraiteFlow - Application PHP MVC">
-              <div class="project-overlay">
-                <a href="https://retraiteflow.pics/" class="project-link" title="Voir le projet">🔗</a>
-                <a href="https://retraiteflow.pics/" class="project-github" target="_blank" title="Visiter le site">⭐</a>
-              </div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Backend</span>
-              <h3>RetraiteFlow - Application PHP MVC</h3>
-              <p>Application PHP MVC avec base MySQL, développée en backend et déployée via GitHub Actions. En charge du développement backend, de l'architecture MVC, des APIs et de l'automatisation DevOps pour un déploiement fiable en production.</p>
-              <div class="project-tags">
-                <span class="tag">PHP MVC</span>
-                <span class="tag">MySQL</span>
-                <span class="tag">GitHub Actions</span>
-                <span class="tag">DevOps</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-      <div class="container">
-        <div class="section-label">Contact</div>
-        <h2 class="section-title">Travaillons ensemble</h2>
-        <p class="section-subtitle">Vous avez un projet en tête ? Contactez-moi pour discuter de vos besoins et comment je pourrais vous aider à les réaliser.</p>
-        <div class="contact-content">
-          <div class="contact-info">
-            <div class="contact-method">
-              <span class="contact-icon">✉️</span>
-              <h3>Email</h3>
-              <a href="mailto:henoctumonakiese@gmail.com">henoctumonakiese@gmail.com</a>
-            </div>
-            <div class="contact-method">
-              <span class="contact-icon">📱</span>
-              <h3>Téléphone</h3>
-              <a href="tel:+243896500709">+243 896500709</a>
-            </div>
-            <div class="contact-method">
-              <span class="contact-icon">📍</span>
-              <h3>Localisation</h3>
-              <p>Kinshasa, RDC</p>
-            </div>
-            <div class="social-links">
-              <a href="https://github.com/hnc450" class="social-link" target="_blank">GitHub</a>
-              <a href="https://gitlab.com/hnc450" class="social-link" target="_blank">GitLab</a>
-              <a href="https://www.linkedin.com/in/henoc-tumonakiese-9192a1395 " class="social-link" target="_blank">LinkedIn</a>
-            </div>
+      <!-- ===== PROJETS ===== -->
+      <section id="projets" class="bg-ink-50 py-20 sm:py-28">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="text-center">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600">Projets</span>
+            <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Mes réalisations</h2>
           </div>
-          <form class="contact-form">
-            <div class="form-group">
-              <input type="text" placeholder="Votre nom" required>
-            </div>
-            <div class="form-group">
-              <input type="email" placeholder="Votre email" required>
-            </div>
-            <div class="form-group">
-              <input type="text" placeholder="Sujet du message" required>
-            </div>
-            <div class="form-group">
-              <textarea placeholder="Votre message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="submit-button">Envoyer le message</button>
-          </form>
-        </div>
-      </div>
-    </section>
 
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 Henock Tumonakiese - Backend Developer. Tous droits réservés.</p>
+          <div class="mt-10 flex flex-wrap justify-center gap-3">
+            <button data-filter="tous" class="filter-btn rounded-full border-2 border-brand-500 bg-brand-500 px-5 py-2 text-sm font-semibold text-white transition">Tous</button>
+            <button data-filter="backend" class="filter-btn rounded-full border-2 border-ink-200 bg-white px-5 py-2 text-sm font-semibold text-ink-700 transition hover:border-brand-400">Backend &amp; API</button>
+            <button data-filter="frontend" class="filter-btn rounded-full border-2 border-ink-200 bg-white px-5 py-2 text-sm font-semibold text-ink-700 transition hover:border-brand-400">Frontend</button>
+            <button data-filter="fullstack" class="filter-btn rounded-full border-2 border-ink-200 bg-white px-5 py-2 text-sm font-semibold text-ink-700 transition hover:border-brand-400">Full Stack</button>
+          </div>
+
+          <div id="projectsGrid" class="mt-12 grid auto-rows-fr gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- TodoList -->
+            <article data-category="frontend" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
+              <div class="relative h-52 overflow-hidden">
+                <img src="images/todolist.png" alt="Ma TodoList - Gestionnaire de tâches" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
+                  <a href="https://tasktodolissts.netlify.app/" target="_blank" rel="noopener" title="Voir le projet" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">🔗</a>
+                </div>
+              </div>
+              <div class="p-6">
+                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Frontend</span>
+                <h3 class="mt-3 text-lg font-bold">Ma TodoList - Gestionnaire de Tâches</h3>
+                <p class="mt-2 text-sm leading-relaxed text-ink-500">Application de gestion de tâches interactive avec filtrage en temps réel, persistance via LocalStorage et interface responsive. Démo React + TypeScript avec gestion d'état efficace.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">React</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">TypeScript</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">LocalStorage</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Ghost -->
+            <article data-category="backend" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
+              <div class="relative h-52 overflow-hidden">
+                <img src="images/ghost.png" alt="Ghost - Framework PHP" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
+                  <a href="https://github.com/hnc450/ghost-composite" target="_blank" rel="noopener" title="Voir sur GitHub" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">⭐</a>
+                </div>
+              </div>
+              <div class="p-6">
+                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Backend</span>
+                <h3 class="mt-3 text-lg font-bold">Ghost - Framework PHP Minimaliste</h3>
+                <p class="mt-2 text-sm leading-relaxed text-ink-500">Framework PHP modulaire avec architecture MVC complète, routing avancé, injection de dépendances, QueryBuilder, protection CSRF et gestion des logs. Conçu pour bâtir des applications robustes et scalables.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">PHP Pur</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">MVC</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">Routing</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">QueryBuilder</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Protect VIN -->
+            <article data-category="fullstack" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
+              <div class="relative h-52 overflow-hidden">
+                <img src="images/protect.png" alt="Protect VIN - Vérification de véhicules" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
+                  <a href="https://protectvim.com/" target="_blank" rel="noopener" title="Visiter le site" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">🔗</a>
+                </div>
+              </div>
+              <div class="p-6">
+                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Full Stack</span>
+                <h3 class="mt-3 text-lg font-bold">Protect VIN - Vérification Véhicules</h3>
+                <p class="mt-2 text-sm leading-relaxed text-ink-500">Plateforme de vérification de véhicules avec recherches croisées par VIN, plaque ou propriétaire. Génération de rapports PDF certifiés avec intégration API police et assurances.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">PHP</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">PDF</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">MySQL</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Mololo+ -->
+            <article data-category="backend" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
+              <div class="relative h-52 overflow-hidden">
+                <img src="images/mololo.png" alt="Mololo+ - Plateforme musicale" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
+                  <a href="https://mololoplus.com/" target="_blank" rel="noopener" title="Visiter le site" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">🔗</a>
+                </div>
+              </div>
+              <div class="p-6">
+                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Backend</span>
+                <h3 class="mt-3 text-lg font-bold">Mololo+ - Plateforme Musicale Africaine</h3>
+                <p class="mt-2 text-sm leading-relaxed text-ink-500">Plateforme SaaS de gestion de carrière musicale avec SmartLink, EPK automatique, booking et opportunités exclusives. Backend MVC PHP avec authentification, paiements d'abonnement et analytics pour 1000+ artistes.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">PHP MVC</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">MySQL</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">API REST</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">Paiements</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Portfolio -->
+            <article data-category="frontend" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
+              <div class="relative h-52 overflow-hidden">
+                <img src="images/porte-folio.png" alt="Portfolio personnel" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
+                  <a href="https://myprofile-folio.netlify.app/" target="_blank" rel="noopener" title="Visiter le site" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">🔗</a>
+                </div>
+              </div>
+              <div class="p-6">
+                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Frontend</span>
+                <h3 class="mt-3 text-lg font-bold">Portfolio Personnel</h3>
+                <p class="mt-2 text-sm leading-relaxed text-ink-500">Portfolio interactif et responsive présentant mon profil de développeur. Navigation fluide, sections détaillées, formulaire de contact et liens sociaux. Démonstration de web design en vanilla JavaScript.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">HTML5</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">CSS3</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">JavaScript</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- RetraiteFlow -->
+            <article data-category="backend" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
+              <div class="relative h-52 overflow-hidden">
+                <img src="images/retraiteflow.png" alt="RetraiteFlow - Application PHP MVC" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
+                  <a href="https://retraiteflow.pics/" target="_blank" rel="noopener" title="Visiter le site" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">🔗</a>
+                </div>
+              </div>
+              <div class="p-6">
+                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Backend</span>
+                <h3 class="mt-3 text-lg font-bold">RetraiteFlow - Application PHP MVC</h3>
+                <p class="mt-2 text-sm leading-relaxed text-ink-500">Application PHP MVC avec base MySQL, développée en backend et déployée via GitHub Actions. Architecture MVC, APIs et automatisation DevOps pour un déploiement fiable en production.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">PHP MVC</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">MySQL</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">GitHub Actions</span>
+                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">DevOps</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTACT ===== -->
+      <section id="contact" class="bg-gradient-to-b from-white to-ink-50 py-20 sm:py-28">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="text-center">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600">Contact</span>
+            <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Travaillons ensemble</h2>
+            <p class="mx-auto mt-4 max-w-2xl text-pretty text-ink-500">
+              Vous avez un projet en tête ? Contactez-moi pour discuter de vos besoins et de la façon
+              dont je pourrais vous aider à les réaliser.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-8 lg:grid-cols-2">
+            <div class="space-y-4">
+              <div class="rounded-2xl border-2 border-ink-200 bg-white p-6 text-center transition hover:border-brand-400 hover:shadow-lg hover:shadow-brand-500/10">
+                <div class="text-3xl">✉️</div>
+                <h3 class="mt-2 font-bold">Email</h3>
+                <a href="mailto:henoctumonakiese@gmail.com" class="mt-1 block break-words font-semibold text-brand-600 hover:text-brand-400">henoctumonakiese@gmail.com</a>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl border-2 border-ink-200 bg-white p-6 text-center transition hover:border-brand-400 hover:shadow-lg hover:shadow-brand-500/10">
+                  <div class="text-3xl">📱</div>
+                  <h3 class="mt-2 font-bold">Téléphone</h3>
+                  <a href="tel:+243896500709" class="mt-1 block font-semibold text-brand-600 hover:text-brand-400">+243 896 500 709</a>
+                </div>
+                <div class="rounded-2xl border-2 border-ink-200 bg-white p-6 text-center transition hover:border-brand-400 hover:shadow-lg hover:shadow-brand-500/10">
+                  <div class="text-3xl">📍</div>
+                  <h3 class="mt-2 font-bold">Localisation</h3>
+                  <p class="mt-1 text-ink-500">Kinshasa, RDC</p>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <a href="https://github.com/hnc450" target="_blank" rel="noopener" class="flex-1 rounded-xl border-2 border-ink-200 bg-white py-3 text-center font-bold text-brand-600 transition hover:border-brand-500 hover:bg-brand-600 hover:text-white">GitHub</a>
+                <a href="https://gitlab.com/hnc450" target="_blank" rel="noopener" class="flex-1 rounded-xl border-2 border-ink-200 bg-white py-3 text-center font-bold text-brand-600 transition hover:border-brand-500 hover:bg-brand-600 hover:text-white">GitLab</a>
+                <a href="https://www.linkedin.com/in/henoc-tumonakiese-9192a1395" target="_blank" rel="noopener" class="flex-1 rounded-xl border-2 border-ink-200 bg-white py-3 text-center font-bold text-brand-600 transition hover:border-brand-500 hover:bg-brand-600 hover:text-white">LinkedIn</a>
+              </div>
+            </div>
+
+            <form id="contactForm" class="flex flex-col gap-4 rounded-2xl border-2 border-ink-200 bg-white p-6 transition hover:border-brand-400 hover:shadow-lg hover:shadow-brand-500/10 sm:p-8">
+              <div>
+                <label for="name" class="sr-only">Votre nom</label>
+                <input id="name" type="text" placeholder="Votre nom" required class="w-full rounded-xl border-2 border-ink-200 bg-ink-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10" />
+              </div>
+              <div>
+                <label for="email" class="sr-only">Votre email</label>
+                <input id="email" type="email" placeholder="Votre email" required class="w-full rounded-xl border-2 border-ink-200 bg-ink-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10" />
+              </div>
+              <div>
+                <label for="subject" class="sr-only">Sujet du message</label>
+                <input id="subject" type="text" placeholder="Sujet du message" required class="w-full rounded-xl border-2 border-ink-200 bg-ink-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10" />
+              </div>
+              <div>
+                <label for="message" class="sr-only">Votre message</label>
+                <textarea id="message" placeholder="Votre message" rows="5" required class="w-full resize-y rounded-xl border-2 border-ink-200 bg-ink-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10"></textarea>
+              </div>
+              <button type="submit" class="rounded-xl bg-brand-600 px-6 py-3.5 font-bold text-white shadow-lg shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-700">Envoyer le message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-ink-900 py-10 text-center text-ink-200/80">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <p class="font-medium">&copy; 2025 Henock Tumonakiese — Backend Developer. Tous droits réservés.</p>
       </div>
     </footer>
 
-    <script type="module" src="main.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

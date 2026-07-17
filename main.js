@@ -1,112 +1,94 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // ========== SMOOTH SCROLL NAVIGATION ==========
-  const navLinks = document.querySelectorAll('.nav-menu a');
-
-  const navMenu = document.querySelector('.nav-menu');
+document.addEventListener("DOMContentLoaded", function () {
+  // ========== MOBILE MENU ==========
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
 
   const closeMobileMenu = () => {
-    navMenu?.classList.remove('is-open');
+    mobileMenu?.classList.add("hidden");
+    menuToggle?.setAttribute("aria-expanded", "false");
   };
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-
-      if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 70;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
-        });
-      }
-
-      closeMobileMenu();
-    });
-  });
-
-  // ========== PROJECT FILTERING ==========
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      const filter = this.getAttribute('data-filter');
-      
-      // Remove active class from all buttons
-      filterBtns.forEach(b => b.classList.remove('active'));
-      // Add active class to clicked button
-      this.classList.add('active');
-      
-      // Filter projects
-      projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        
-        if (filter === 'tous' || category === filter) {
-          card.style.display = '';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 10);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 300);
-        }
-      });
-    });
-  });
-
-  // ========== CONTACT FORM ==========
-  const contactForm = document.querySelector('.contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Merci pour votre message ! Nous vous répondrons bientôt.');
-      contactForm.reset();
-    });
-  }
-
-  // ========== INTERSECTION OBSERVER FOR ANIMATIONS ==========
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  const cards = document.querySelectorAll('.team-card, .project-card, .skill-card, .skill-category, .about-content, .timeline-content');
-  cards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
-  });
-
-  // ========== MOBILE MENU TOGGLE ==========
-  const menuToggle = document.getElementById('menuToggle');
-
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', function() {
-      navMenu.classList.toggle('is-open');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const isOpen = !mobileMenu.classList.contains("hidden");
+      mobileMenu.classList.toggle("hidden");
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
     });
 
-    document.addEventListener('click', function(e) {
+    document.addEventListener("click", function (e) {
       if (
-        navMenu.classList.contains('is-open') &&
-        !navMenu.contains(e.target) &&
+        !mobileMenu.classList.contains("hidden") &&
+        !mobileMenu.contains(e.target) &&
         !menuToggle.contains(e.target)
       ) {
         closeMobileMenu();
       }
     });
   }
-});
 
+  // Close menu when a nav link is clicked
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  // ========== PROJECT FILTERING ==========
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  const activeClasses = ["border-brand-500", "bg-brand-500", "text-white"];
+  const inactiveClasses = ["border-ink-200", "bg-white", "text-ink-700"];
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const filter = this.getAttribute("data-filter");
+
+      filterBtns.forEach((b) => {
+        b.classList.remove(...activeClasses);
+        b.classList.add(...inactiveClasses);
+      });
+      this.classList.remove(...inactiveClasses);
+      this.classList.add(...activeClasses);
+
+      projectCards.forEach((card) => {
+        const category = card.getAttribute("data-category");
+        const show = filter === "tous" || category === filter;
+
+        if (show) {
+          card.classList.remove("hidden");
+          requestAnimationFrame(() => {
+            card.classList.remove("opacity-0", "scale-95");
+          });
+        } else {
+          card.classList.add("opacity-0", "scale-95");
+          setTimeout(() => card.classList.add("hidden"), 250);
+        }
+      });
+    });
+  });
+
+  // ========== SCROLL REVEAL ==========
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+  // ========== CONTACT FORM ==========
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Merci pour votre message ! Je vous répondrai bientôt.");
+      contactForm.reset();
+    });
+  }
+});
