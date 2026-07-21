@@ -1,562 +1,669 @@
-<!doctype html>
-<html lang="fr" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Portfolio de Henock Tumonakiese, développeur backend spécialisé en PHP/Laravel et architectures d'APIs scalables."
-    />
-    <meta name="theme-color" content="#0f172a" />
-    <title>Henock Tumonakiese — Développeur Backend</title>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henock Tumonakiese — Backend Developer</title>
+<meta name="description" content="Portfolio de Henock Tumonakiese, Développeur Backend spécialisé en PHP, Laravel, API & DevOps — Kinshasa, RDC.">
 
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                50: "#eef2ff",
-                100: "#e0e7ff",
-                200: "#c7d2fe",
-                300: "#a5b4fc",
-                400: "#818cf8",
-                500: "#6366f1",
-                600: "#4f46e5",
-                700: "#4338ca",
-              },
-              ink: {
-                900: "#0f172a",
-                800: "#1e293b",
-                700: "#334155",
-                500: "#64748b",
-                400: "#94a3b8",
-                200: "#e2e8f0",
-                100: "#f1f5f9",
-                50: "#f8fafc",
-              },
-            },
-            fontFamily: {
-              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-            },
-            keyframes: {
-              fadeUp: {
-                "0%": { opacity: "0", transform: "translateY(24px)" },
-                "100%": { opacity: "1", transform: "translateY(0)" },
-              },
-              fadeDown: {
-                "0%": { opacity: "0", transform: "translateY(-16px)" },
-                "100%": { opacity: "1", transform: "translateY(0)" },
-              },
-            },
-            animation: {
-              fadeUp: "fadeUp 0.8s ease both",
-              fadeDown: "fadeDown 0.8s ease both",
-            },
-          },
-        },
-      };
-    </script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <style>
-      html {
-        scroll-padding-top: 5rem;
-      }
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-      .reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    </style>
-  </head>
+<!-- AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-  <body class="bg-white font-sans text-ink-900 antialiased">
-    <!-- ===== NAVBAR ===== -->
-    <nav class="fixed inset-x-0 top-0 z-50 border-b border-ink-200/70 bg-white/80 backdrop-blur-md">
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <a
-          href="#accueil"
-          class="bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-xl font-black tracking-tight text-transparent"
-          >HT</a
-        >
-        <ul id="navMenu" class="hidden items-center gap-8 md:flex">
-          <li><a class="nav-link text-sm font-medium text-ink-700 transition hover:text-brand-600" href="#accueil">Accueil</a></li>
-          <li><a class="nav-link text-sm font-medium text-ink-700 transition hover:text-brand-600" href="#apropos">À propos</a></li>
-          <li><a class="nav-link text-sm font-medium text-ink-700 transition hover:text-brand-600" href="#competences">Compétences</a></li>
-          <li><a class="nav-link text-sm font-medium text-ink-700 transition hover:text-brand-600" href="#projets">Projets</a></li>
-          <li><a class="nav-link text-sm font-medium text-ink-700 transition hover:text-brand-600" href="#experience">Expérience</a></li>
-          <li>
-            <a
-              class="nav-link rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700"
-              href="#contact"
-              >Contact</a
-            >
-          </li>
-        </ul>
-        <button
-          id="menuToggle"
-          aria-label="Ouvrir le menu"
-          aria-expanded="false"
-          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-ink-200 text-ink-700 md:hidden"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-        </button>
-      </div>
-      <!-- Mobile menu -->
-      <div id="mobileMenu" class="hidden border-t border-ink-200 bg-white md:hidden">
-        <ul class="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3">
-          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50" href="#accueil">Accueil</a></li>
-          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50" href="#apropos">À propos</a></li>
-          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50" href="#competences">Compétences</a></li>
-          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50" href="#projets">Projets</a></li>
-          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50" href="#experience">Expérience</a></li>
-          <li><a class="nav-link block rounded-lg px-3 py-2 text-sm font-semibold text-brand-600 hover:bg-ink-50" href="#contact">Contact</a></li>
-        </ul>
-      </div>
+<!-- Swiper -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <svg class="loader-mark" viewBox="0 0 100 100" width="72" height="72">
+      <circle class="loader-ring" cx="50" cy="50" r="42"/>
+      <text x="50" y="58" text-anchor="middle" class="loader-glyph">&lt;/&gt;</text>
+    </svg>
+    <div class="loader-name">Henock<span>.</span>Tumonakiese</div>
+    <div class="loader-bar-track"><div class="loader-bar-fill" id="loaderFill"></div></div>
+    <div class="loader-status" id="loaderStatus">Initialisation du serveur…</div>
+  </div>
+</div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ============ HEADER ============ -->
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#accueil" class="nav-logo">
+      <span class="logo-bracket">&lt;</span>H<span class="logo-dot">.</span>T<span class="logo-bracket">/&gt;</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#accueil" class="nav-link active" data-link>Accueil</a>
+      <a href="#apropos" class="nav-link" data-link>À propos</a>
+      <a href="#competences" class="nav-link" data-link>Compétences</a>
+      <a href="#experience" class="nav-link" data-link>Expérience</a>
+      <a href="#projets" class="nav-link" data-link>Projets</a>
+      <a href="#contact" class="nav-link" data-link>Contact</a>
     </nav>
 
-    <!-- ===== HERO ===== -->
-    <header
-      id="accueil"
-      class="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 px-4 pb-20 pt-28 text-white sm:px-6"
-    >
-      <div class="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-500/20 blur-3xl"></div>
-      <div class="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-brand-500/15 blur-3xl"></div>
+    <div class="nav-actions">
+      <a href="#" class="btn-cv" id="downloadCv">
+        <i class="fa-solid fa-download"></i><span>CV</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+        <i class="fa-solid fa-sun icon-sun"></i>
+        <i class="fa-solid fa-moon icon-moon"></i>
+        <span class="theme-thumb"></span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
 
-      <div class="relative z-10 mx-auto max-w-3xl text-center animate-fadeUp">
-        <span
-          class="mb-8 inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-xs font-semibold text-emerald-300 sm:text-sm"
-        >
-          <span class="h-2 w-2 animate-pulse rounded-full bg-emerald-400"></span>
-          Disponible pour de nouveaux projets
-        </span>
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#accueil" data-link>Accueil</a>
+  <a href="#apropos" data-link>À propos</a>
+  <a href="#competences" data-link>Compétences</a>
+  <a href="#experience" data-link>Expérience</a>
+  <a href="#projets" data-link>Projets</a>
+  <a href="#contact" data-link>Contact</a>
+  <a href="#" class="mobile-cv" id="downloadCvMobile"><i class="fa-solid fa-download"></i> Télécharger le CV</a>
+</div>
 
-        <p class="mb-3 text-base font-medium tracking-wide text-ink-200/90">Bonjour, je suis</p>
-        <h1 class="text-balance bg-gradient-to-r from-white to-brand-200 bg-clip-text text-4xl font-black leading-tight text-transparent sm:text-6xl lg:text-7xl">
-          Henock Tumonakiese
-        </h1>
-        <p class="mt-5 text-lg font-semibold text-ink-100 sm:text-xl">
-          Développeur Backend · PHP / Laravel · Compétences Frontend
-        </p>
-        <p class="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-ink-200/80 sm:text-lg">
-          Je conçois des solutions numériques intelligentes et robustes, spécialisées en backend PHP
-          et architectures d'APIs scalables.
-        </p>
+<main>
 
-        <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-          <a
-            href="#projets"
-            class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 px-7 py-3.5 font-bold text-white shadow-xl shadow-brand-600/40 transition hover:-translate-y-1 hover:bg-brand-400 sm:w-auto"
-          >
-            Voir mes projets
-            <span class="transition group-hover:translate-x-1">&rarr;</span>
-          </a>
-          <a
-            href="#contact"
-            class="inline-flex w-full items-center justify-center rounded-xl border-2 border-white/40 px-7 py-3.5 font-bold text-white transition hover:-translate-y-1 hover:bg-white/10 sm:w-auto"
-          >
-            Me contacter
-          </a>
+<!-- ============ HERO ============ -->
+<section class="hero" id="accueil">
+  <div class="hero-bg">
+    <canvas id="particles"></canvas>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="mesh-grid"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-text" data-aos="fade-up">
+      <p class="hero-eyebrow"><span class="dot-live"></span> Disponible pour de nouveaux projets</p>
+      <h1 class="hero-title">
+        Henock <span class="text-gradient">Tumonakiese</span>
+      </h1>
+      <p class="hero-role">
+        <span id="typed"></span><span class="typed-cursor">|</span>
+      </p>
+      <p class="hero-tagline">Spécialisé en <strong>PHP</strong> • <strong>Laravel</strong> • <strong>API</strong> • <strong>DevOps</strong></p>
+      <p class="hero-desc">Je conçois des architectures backend robustes et des APIs scalables qui résolvent de vrais problèmes — du modèle de données au déploiement en production.</p>
+
+      <div class="hero-actions">
+        <a href="#projets" class="btn btn-primary magnetic"><span>Voir mes projets</span><i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#" class="btn btn-ghost magnetic" id="downloadCvHero"><span>Télécharger CV</span><i class="fa-solid fa-download"></i></a>
+        <a href="#contact" class="btn btn-outline magnetic"><span>Contact</span></a>
+      </div>
+
+      <div class="hero-socials">
+        <a href="https://github.com/hnc450" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://gitlab.com/hnc450" target="_blank" rel="noopener" aria-label="GitLab"><i class="fa-brands fa-gitlab"></i></a>
+        <a href="https://www.linkedin.com/in/henoc-tumonakiese-9192a1395" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="hero-visual" data-aos="fade-left" data-aos-delay="150">
+      <div class="avatar-frame float-anim">
+        <div class="avatar-glow"></div>
+        <div class="avatar-core">HT</div>
+        <div class="avatar-ring"></div>
+      </div>
+
+      <!-- Signature element: live "API" terminal card -->
+      <div class="terminal-card float-anim-slow">
+        <div class="terminal-head">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="terminal-title">api.henock.dev</span>
         </div>
+        <div class="terminal-body">
+          <p><span class="tk-method">GET</span> <span class="tk-path">/v1/developer/henock</span></p>
+          <p class="tk-comment">// Réponse du serveur</p>
+          <p>{</p>
+          <p class="tk-indent">"status": <span class="tk-string">"200 OK"</span>,</p>
+          <p class="tk-indent">"role": <span class="tk-string">"Backend Developer"</span>,</p>
+          <p class="tk-indent">"stack": [<span class="tk-string">"PHP"</span>, <span class="tk-string">"Laravel"</span>, <span class="tk-string">"Docker"</span>],</p>
+          <p class="tk-indent">"disponible": <span class="tk-bool">true</span></p>
+          <p>}</p>
+        </div>
+        <div class="terminal-caret"><span class="blink">_</span></div>
+      </div>
 
-        <div class="mx-auto mt-14 grid max-w-md grid-cols-2 gap-4">
-          <div class="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur">
-            <div class="text-3xl font-black text-brand-300 sm:text-4xl">3+</div>
-            <div class="mt-1 text-sm text-ink-200/80">Années d'expérience</div>
+      <div class="floating-chip chip-1">⚡ 99.9% Uptime</div>
+      <div class="floating-chip chip-2">🔗 REST · GraphQL</div>
+    </div>
+  </div>
+
+  <a href="#technologies" class="scroll-indicator" aria-label="Défiler vers le bas">
+    <span>Scroll</span>
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+  </a>
+</section>
+
+<!-- ============ TECHNOLOGIES CAROUSEL ============ -->
+<section class="tech-strip" id="technologies">
+  <div class="marquee">
+    <div class="marquee-track" id="marqueeTrack">
+      <!-- duplicated via JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ À PROPOS ============ -->
+<section class="about" id="apropos">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <span class="section-eyebrow">Qui suis-je</span>
+      <h2 class="section-title">À propos de moi</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-photo" data-aos="fade-right">
+        <div class="photo-frame">
+          <div class="photo-mono">HT</div>
+        </div>
+        <div class="photo-backdrop"></div>
+      </div>
+
+      <div class="about-content" data-aos="fade-left">
+        <p class="about-lead">Développeur Backend passionné avec une expertise approfondie en <strong>PHP</strong> et <strong>Laravel</strong>.</p>
+        <p>Je suis spécialisé dans la création d'APIs robustes et scalables qui résolvent les vrais problèmes. Je possède également une solide compétence en développement frontend (React, HTML5, CSS3, JavaScript), ce qui me permet de comprendre l'ensemble de la chaîne applicative — du modèle de données jusqu'à l'interface.</p>
+        <p>Basé à Kinshasa, RDC, je travaille aujourd'hui comme Développeur DevOps chez <strong>Mokili</strong>, où j'automatise les déploiements et j'administre des infrastructures cloud pour une startup en forte croissance.</p>
+
+        <div class="about-timeline">
+          <div class="timeline-mini">
+            <span class="timeline-year">2023</span>
+            <span class="timeline-label">Début du parcours à l'UPC</span>
           </div>
-          <div class="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur">
-            <div class="text-3xl font-black text-brand-300 sm:text-4xl">6+</div>
-            <div class="mt-1 text-sm text-ink-200/80">Projets réalisés</div>
+          <div class="timeline-mini">
+            <span class="timeline-year">2025</span>
+            <span class="timeline-label">Développeur DevOps — Mokili</span>
+          </div>
+          <div class="timeline-mini">
+            <span class="timeline-year">Auj.</span>
+            <span class="timeline-label">Backend Developer</span>
           </div>
         </div>
       </div>
-    </header>
+    </div>
 
-    <main>
-      <!-- ===== À PROPOS ===== -->
-      <section id="apropos" class="bg-white py-20 sm:py-28">
-        <div class="mx-auto max-w-6xl px-4 sm:px-6">
-          <div class="text-center">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600">À propos</span>
-            <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Qui suis-je ?</h2>
-          </div>
-
-          <div class="mt-14 grid items-center gap-12 lg:grid-cols-2">
-            <div class="reveal space-y-4 text-base leading-relaxed text-ink-500 sm:text-lg">
-              <p>
-                Développeur Backend passionné avec une expertise approfondie en PHP et Laravel. Je suis
-                spécialisé dans la création d'APIs robustes et scalables qui résolvent les vrais
-                problèmes. Je possède également une solide compétence en développement frontend (React,
-                HTML5, CSS3, JavaScript).
-              </p>
-              <p>
-                Fort de plusieurs années d'expérience, j'ai eu l'opportunité de travailler sur des
-                projets variés en environnement startup, ce qui m'a permis de développer une approche
-                pragmatique du développement logiciel.
-              </p>
-              <div class="grid gap-3 pt-2">
-                <div class="flex items-center gap-3 rounded-xl border-l-4 border-brand-500 bg-ink-50 p-4">
-                  <span class="text-2xl">💻</span>
-                  <span class="font-semibold text-ink-900">Code propre et maintenable</span>
-                </div>
-                <div class="flex items-center gap-3 rounded-xl border-l-4 border-brand-500 bg-ink-50 p-4">
-                  <span class="text-2xl">⚡</span>
-                  <span class="font-semibold text-ink-900">Solutions performantes et évolutives</span>
-                </div>
-                <div class="flex items-center gap-3 rounded-xl border-l-4 border-brand-500 bg-ink-50 p-4">
-                  <span class="text-2xl">🎯</span>
-                  <span class="font-semibold text-ink-900">Approche orientée problème réel</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="reveal flex justify-center">
-              <div class="relative w-full max-w-sm">
-                <div class="absolute inset-0 -rotate-6 rounded-3xl bg-gradient-to-br from-brand-500 to-brand-700"></div>
-                <img
-                  src="images/avatar.png"
-                  alt="Portrait de Henock Tumonakiese"
-                  class="relative aspect-square w-full rounded-3xl object-cover shadow-2xl"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== COMPÉTENCES ===== -->
-      <section id="competences" class="bg-gradient-to-b from-ink-50 to-white py-20 sm:py-28">
-        <div class="mx-auto max-w-6xl px-4 sm:px-6">
-          <div class="text-center">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600">Compétences</span>
-            <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Mon expertise technique</h2>
-          </div>
-
-          <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <!-- card -->
-            <div class="reveal group rounded-2xl border-2 border-ink-200 bg-white p-7 text-center transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/10">
-              <div class="text-4xl">🔧</div>
-              <h3 class="mt-4 text-lg font-bold">Développement Backend</h3>
-              <div class="mt-4 flex flex-col gap-2">
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">PHP / Laravel</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">APIs REST</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Architecture backend</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Authentification</span>
-              </div>
-            </div>
-
-            <div class="reveal group rounded-2xl border-2 border-ink-200 bg-white p-7 text-center transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/10">
-              <div class="text-4xl">🎨</div>
-              <h3 class="mt-4 text-lg font-bold">Développement Frontend</h3>
-              <div class="mt-4 flex flex-col gap-2">
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">HTML5 / CSS3</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">JavaScript / TypeScript</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">React</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Responsive Design</span>
-              </div>
-            </div>
-
-            <div class="reveal group rounded-2xl border-2 border-ink-200 bg-white p-7 text-center transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/10">
-              <div class="text-4xl">🗄️</div>
-              <h3 class="mt-4 text-lg font-bold">Bases de données</h3>
-              <div class="mt-4 flex flex-col gap-2">
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">MySQL / MariaDB</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">PostgreSQL</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Query optimization</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Database design</span>
-              </div>
-            </div>
-
-            <div class="reveal group rounded-2xl border-2 border-ink-200 bg-white p-7 text-center transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/10">
-              <div class="text-4xl">🔄</div>
-              <h3 class="mt-4 text-lg font-bold">DevOps &amp; Outils</h3>
-              <div class="mt-4 flex flex-col gap-2">
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Git / GitHub</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">GitLab</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Docker</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">CI/CD</span>
-              </div>
-            </div>
-
-            <div class="reveal group rounded-2xl border-2 border-ink-200 bg-white p-7 text-center transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/10">
-              <div class="text-4xl">⚙️</div>
-              <h3 class="mt-4 text-lg font-bold">Server Management</h3>
-              <div class="mt-4 flex flex-col gap-2">
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Linux / Ubuntu</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Nginx / Apache</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">Deployment</span>
-                <span class="rounded-lg bg-ink-50 px-3 py-1.5 text-sm font-medium text-ink-700 transition group-hover:bg-brand-50 group-hover:text-brand-600">System Admin</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== EXPÉRIENCE ===== -->
-      <section id="experience" class="bg-white py-20 sm:py-28">
-        <div class="mx-auto max-w-6xl px-4 sm:px-6">
-          <div class="text-center">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600">Expérience</span>
-            <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Mon parcours</h2>
-          </div>
-
-          <div class="relative mx-auto mt-14 max-w-2xl">
-            <div class="absolute left-3 top-2 h-full w-0.5 bg-ink-200 sm:left-1/2 sm:-translate-x-1/2"></div>
-
-            <div class="relative mb-10 pl-12 sm:pl-0">
-              <div class="absolute left-1.5 top-2 h-4 w-4 rounded-full border-4 border-white bg-brand-500 ring-4 ring-ink-100 sm:left-1/2 sm:-translate-x-1/2"></div>
-              <div class="reveal rounded-2xl border border-ink-200 bg-ink-50 p-6 sm:mr-[calc(50%+2rem)]">
-                <h3 class="text-lg font-bold">Développeur DevOps</h3>
-                <p class="mt-1 text-xs font-bold uppercase tracking-wide text-brand-600">Mokili — 2025 à présent</p>
-                <p class="mt-3 leading-relaxed text-ink-500">
-                  Gestion des infrastructures cloud, déploiement en production, automatisation avec
-                  Docker et orchestration. Support technique pour une startup émergente en croissance
-                  rapide.
-                </p>
-              </div>
-            </div>
-
-            <div class="relative pl-12 sm:pl-0">
-              <div class="absolute left-1.5 top-2 h-4 w-4 rounded-full border-4 border-white bg-brand-500 ring-4 ring-ink-100 sm:left-1/2 sm:-translate-x-1/2"></div>
-              <div class="reveal rounded-2xl border border-ink-200 bg-ink-50 p-6 sm:ml-[calc(50%+2rem)]">
-                <h3 class="text-lg font-bold">Étudiant en Informatique</h3>
-                <p class="mt-1 text-xs font-bold uppercase tracking-wide text-brand-600">UPC — 2023 à 2025</p>
-                <p class="mt-3 leading-relaxed text-ink-500">
-                  Formation académique approfondie en informatique avec focus sur les architectures
-                  backend, les APIs et les infrastructures cloud. Projets pratiques en développement web
-                  et DevOps.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== PROJETS ===== -->
-      <section id="projets" class="bg-ink-50 py-20 sm:py-28">
-        <div class="mx-auto max-w-6xl px-4 sm:px-6">
-          <div class="text-center">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600">Projets</span>
-            <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Mes réalisations</h2>
-          </div>
-
-          <div class="mt-10 flex flex-wrap justify-center gap-3">
-            <button data-filter="tous" class="filter-btn rounded-full border-2 border-brand-500 bg-brand-500 px-5 py-2 text-sm font-semibold text-white transition">Tous</button>
-            <button data-filter="backend" class="filter-btn rounded-full border-2 border-ink-200 bg-white px-5 py-2 text-sm font-semibold text-ink-700 transition hover:border-brand-400">Backend &amp; API</button>
-            <button data-filter="frontend" class="filter-btn rounded-full border-2 border-ink-200 bg-white px-5 py-2 text-sm font-semibold text-ink-700 transition hover:border-brand-400">Frontend</button>
-            <button data-filter="fullstack" class="filter-btn rounded-full border-2 border-ink-200 bg-white px-5 py-2 text-sm font-semibold text-ink-700 transition hover:border-brand-400">Full Stack</button>
-          </div>
-
-          <div id="projectsGrid" class="mt-12 grid auto-rows-fr gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            <!-- TodoList -->
-            <article data-category="frontend" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
-              <div class="relative h-52 overflow-hidden">
-                <img src="images/todolist.png" alt="Ma TodoList - Gestionnaire de tâches" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
-                  <a href="https://tasktodolissts.netlify.app/" target="_blank" rel="noopener" title="Voir le projet" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">🔗</a>
-                </div>
-              </div>
-              <div class="p-6">
-                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Frontend</span>
-                <h3 class="mt-3 text-lg font-bold">Ma TodoList - Gestionnaire de Tâches</h3>
-                <p class="mt-2 text-sm leading-relaxed text-ink-500">Application de gestion de tâches interactive avec filtrage en temps réel, persistance via LocalStorage et interface responsive. Démo React + TypeScript avec gestion d'état efficace.</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">React</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">TypeScript</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">LocalStorage</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Ghost -->
-            <article data-category="backend" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
-              <div class="relative h-52 overflow-hidden">
-                <img src="images/ghost.png" alt="Ghost - Framework PHP" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
-                  <a href="https://github.com/hnc450/ghost-composite" target="_blank" rel="noopener" title="Voir sur GitHub" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">⭐</a>
-                </div>
-              </div>
-              <div class="p-6">
-                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Backend</span>
-                <h3 class="mt-3 text-lg font-bold">Ghost - Framework PHP Minimaliste</h3>
-                <p class="mt-2 text-sm leading-relaxed text-ink-500">Framework PHP modulaire avec architecture MVC complète, routing avancé, injection de dépendances, QueryBuilder, protection CSRF et gestion des logs. Conçu pour bâtir des applications robustes et scalables.</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">PHP Pur</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">MVC</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">Routing</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">QueryBuilder</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Protect VIN -->
-            <article data-category="fullstack" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
-              <div class="relative h-52 overflow-hidden">
-                <img src="images/protect.png" alt="Protect VIN - Vérification de véhicules" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
-                  <a href="https://protectvim.com/" target="_blank" rel="noopener" title="Visiter le site" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">🔗</a>
-                </div>
-              </div>
-              <div class="p-6">
-                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Full Stack</span>
-                <h3 class="mt-3 text-lg font-bold">Protect VIN - Vérification Véhicules</h3>
-                <p class="mt-2 text-sm leading-relaxed text-ink-500">Plateforme de vérification de véhicules avec recherches croisées par VIN, plaque ou propriétaire. Génération de rapports PDF certifiés avec intégration API police et assurances.</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">PHP</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">PDF</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">MySQL</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Mololo+ -->
-            <article data-category="backend" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
-              <div class="relative h-52 overflow-hidden">
-                <img src="images/mololo.png" alt="Mololo+ - Plateforme musicale" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
-                  <a href="https://mololoplus.com/" target="_blank" rel="noopener" title="Visiter le site" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">🔗</a>
-                </div>
-              </div>
-              <div class="p-6">
-                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Backend</span>
-                <h3 class="mt-3 text-lg font-bold">Mololo+ - Plateforme Musicale Africaine</h3>
-                <p class="mt-2 text-sm leading-relaxed text-ink-500">Plateforme SaaS de gestion de carrière musicale avec SmartLink, EPK automatique, booking et opportunités exclusives. Backend MVC PHP avec authentification, paiements d'abonnement et analytics pour 1000+ artistes.</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">PHP MVC</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">MySQL</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">API REST</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">Paiements</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Portfolio -->
-            <article data-category="frontend" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
-              <div class="relative h-52 overflow-hidden">
-                <img src="images/porte-folio.png" alt="Portfolio personnel" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
-                  <a href="https://myprofile-folio.netlify.app/" target="_blank" rel="noopener" title="Visiter le site" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">🔗</a>
-                </div>
-              </div>
-              <div class="p-6">
-                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Frontend</span>
-                <h3 class="mt-3 text-lg font-bold">Portfolio Personnel</h3>
-                <p class="mt-2 text-sm leading-relaxed text-ink-500">Portfolio interactif et responsive présentant mon profil de développeur. Navigation fluide, sections détaillées, formulaire de contact et liens sociaux. Démonstration de web design en vanilla JavaScript.</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">HTML5</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">CSS3</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">JavaScript</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- RetraiteFlow -->
-            <article data-category="backend" class="project-card reveal group overflow-hidden rounded-2xl border-2 border-ink-200 bg-white transition hover:-translate-y-2 hover:border-brand-400 hover:shadow-xl hover:shadow-brand-500/15">
-              <div class="relative h-52 overflow-hidden">
-                <img src="images/retraiteflow.png" alt="RetraiteFlow - Application PHP MVC" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-brand-600/80 opacity-0 transition group-hover:opacity-100">
-                  <a href="https://retraiteflow.pics/" target="_blank" rel="noopener" title="Visiter le site" class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-white/20 text-white transition hover:bg-white hover:text-brand-600">🔗</a>
-                </div>
-              </div>
-              <div class="p-6">
-                <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-600">Backend</span>
-                <h3 class="mt-3 text-lg font-bold">RetraiteFlow - Application PHP MVC</h3>
-                <p class="mt-2 text-sm leading-relaxed text-ink-500">Application PHP MVC avec base MySQL, développée en backend et déployée via GitHub Actions. Architecture MVC, APIs et automatisation DevOps pour un déploiement fiable en production.</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">PHP MVC</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">MySQL</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">GitHub Actions</span>
-                  <span class="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">DevOps</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== CONTACT ===== -->
-      <section id="contact" class="bg-gradient-to-b from-white to-ink-50 py-20 sm:py-28">
-        <div class="mx-auto max-w-6xl px-4 sm:px-6">
-          <div class="text-center">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600">Contact</span>
-            <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Travaillons ensemble</h2>
-            <p class="mx-auto mt-4 max-w-2xl text-pretty text-ink-500">
-              Vous avez un projet en tête ? Contactez-moi pour discuter de vos besoins et de la façon
-              dont je pourrais vous aider à les réaliser.
-            </p>
-          </div>
-
-          <div class="mt-14 grid gap-8 lg:grid-cols-2">
-            <div class="space-y-4">
-              <div class="rounded-2xl border-2 border-ink-200 bg-white p-6 text-center transition hover:border-brand-400 hover:shadow-lg hover:shadow-brand-500/10">
-                <div class="text-3xl">✉️</div>
-                <h3 class="mt-2 font-bold">Email</h3>
-                <a href="mailto:henoctumonakiese@gmail.com" class="mt-1 block break-words font-semibold text-brand-600 hover:text-brand-400">henoctumonakiese@gmail.com</a>
-              </div>
-              <div class="grid gap-4 sm:grid-cols-2">
-                <div class="rounded-2xl border-2 border-ink-200 bg-white p-6 text-center transition hover:border-brand-400 hover:shadow-lg hover:shadow-brand-500/10">
-                  <div class="text-3xl">📱</div>
-                  <h3 class="mt-2 font-bold">Téléphone</h3>
-                  <a href="tel:+243896500709" class="mt-1 block font-semibold text-brand-600 hover:text-brand-400">+243 896 500 709</a>
-                </div>
-                <div class="rounded-2xl border-2 border-ink-200 bg-white p-6 text-center transition hover:border-brand-400 hover:shadow-lg hover:shadow-brand-500/10">
-                  <div class="text-3xl">📍</div>
-                  <h3 class="mt-2 font-bold">Localisation</h3>
-                  <p class="mt-1 text-ink-500">Kinshasa, RDC</p>
-                </div>
-              </div>
-              <div class="flex gap-3">
-                <a href="https://github.com/hnc450" target="_blank" rel="noopener" class="flex-1 rounded-xl border-2 border-ink-200 bg-white py-3 text-center font-bold text-brand-600 transition hover:border-brand-500 hover:bg-brand-600 hover:text-white">GitHub</a>
-                <a href="https://gitlab.com/hnc450" target="_blank" rel="noopener" class="flex-1 rounded-xl border-2 border-ink-200 bg-white py-3 text-center font-bold text-brand-600 transition hover:border-brand-500 hover:bg-brand-600 hover:text-white">GitLab</a>
-                <a href="https://www.linkedin.com/in/henoc-tumonakiese-9192a1395" target="_blank" rel="noopener" class="flex-1 rounded-xl border-2 border-ink-200 bg-white py-3 text-center font-bold text-brand-600 transition hover:border-brand-500 hover:bg-brand-600 hover:text-white">LinkedIn</a>
-              </div>
-            </div>
-
-            <form id="contactForm" class="flex flex-col gap-4 rounded-2xl border-2 border-ink-200 bg-white p-6 transition hover:border-brand-400 hover:shadow-lg hover:shadow-brand-500/10 sm:p-8">
-              <div>
-                <label for="name" class="sr-only">Votre nom</label>
-                <input id="name" type="text" placeholder="Votre nom" required class="w-full rounded-xl border-2 border-ink-200 bg-ink-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10" />
-              </div>
-              <div>
-                <label for="email" class="sr-only">Votre email</label>
-                <input id="email" type="email" placeholder="Votre email" required class="w-full rounded-xl border-2 border-ink-200 bg-ink-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10" />
-              </div>
-              <div>
-                <label for="subject" class="sr-only">Sujet du message</label>
-                <input id="subject" type="text" placeholder="Sujet du message" required class="w-full rounded-xl border-2 border-ink-200 bg-ink-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10" />
-              </div>
-              <div>
-                <label for="message" class="sr-only">Votre message</label>
-                <textarea id="message" placeholder="Votre message" rows="5" required class="w-full resize-y rounded-xl border-2 border-ink-200 bg-ink-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10"></textarea>
-              </div>
-              <button type="submit" class="rounded-xl bg-brand-600 px-6 py-3.5 font-bold text-white shadow-lg shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-700">Envoyer le message</button>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="bg-ink-900 py-10 text-center text-ink-200/80">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <p class="font-medium">&copy; 2025 Henock Tumonakiese — Backend Developer. Tous droits réservés.</p>
+    <!-- STATS -->
+    <div class="stats-grid" data-aos="fade-up">
+      <div class="stat-card">
+        <span class="stat-number" data-count="3" data-suffix="+">0</span>
+        <span class="stat-label">Années d'expérience</span>
       </div>
-    </footer>
+      <div class="stat-card">
+        <span class="stat-number" data-count="6" data-suffix="+">0</span>
+        <span class="stat-label">Projets réalisés</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-count="100" data-suffix="%">0</span>
+        <span class="stat-label">Passion</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number-infinity">∞</span>
+        <span class="stat-label">Apprentissage</span>
+      </div>
+    </div>
+    <p class="swipe-hint"><i class="fa-solid fa-arrows-left-right"></i> Glissez pour voir plus</p>
+  </div>
+</section>
 
-    <script src="main.js"></script>
-  </body>
+<!-- ============ MES VALEURS ============ -->
+<section class="values">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <span class="section-eyebrow">Ma philosophie</span>
+      <h2 class="section-title">Mes valeurs</h2>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card tilt" data-aos="fade-up" data-aos-delay="0">
+        <div class="value-icon"><i class="fa-solid fa-code"></i></div>
+        <h3>Code propre</h3>
+        <p>Un code lisible, structuré et documenté — pensé pour être maintenu, pas seulement pour fonctionner.</p>
+      </div>
+      <div class="value-card tilt" data-aos="fade-up" data-aos-delay="100">
+        <div class="value-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h3>Performance</h3>
+        <p>Des requêtes optimisées, des architectures pensées pour la rapidité et la fiabilité en production.</p>
+      </div>
+      <div class="value-card tilt" data-aos="fade-up" data-aos-delay="200">
+        <div class="value-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Scalabilité</h3>
+        <p>Des systèmes conçus pour grandir : de quelques utilisateurs à plusieurs milliers, sans réécriture.</p>
+      </div>
+    </div>
+    <p class="swipe-hint"><i class="fa-solid fa-arrows-left-right"></i> Glissez pour voir plus</p>
+  </div>
+</section>
+
+<!-- ============ COMPÉTENCES ============ -->
+<section class="skills" id="competences">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <span class="section-eyebrow">Boîte à outils</span>
+      <h2 class="section-title">Compétences</h2>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="skill-top">
+          <div class="skill-icon"><i class="fa-solid fa-server"></i></div>
+          <h3>Backend</h3>
+        </div>
+        <p>PHP, Laravel, APIs REST, authentification, architecture MVC.</p>
+        <div class="skill-bar"><span style="--val:92%"></span></div>
+      </div>
+
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="skill-top">
+          <div class="skill-icon"><i class="fa-solid fa-display"></i></div>
+          <h3>Frontend</h3>
+        </div>
+        <p>HTML5, CSS3, JavaScript, TypeScript, React, design responsive.</p>
+        <div class="skill-bar"><span style="--val:78%"></span></div>
+      </div>
+
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="skill-top">
+          <div class="skill-icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <h3>DevOps</h3>
+        </div>
+        <p>Docker, Git, GitLab CI/CD, automatisation des déploiements.</p>
+        <div class="skill-bar"><span style="--val:85%"></span></div>
+      </div>
+
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="skill-top">
+          <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+          <h3>Database</h3>
+        </div>
+        <p>MySQL, PostgreSQL, modélisation, optimisation de requêtes.</p>
+        <div class="skill-bar"><span style="--val:88%"></span></div>
+      </div>
+
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="320">
+        <div class="skill-top">
+          <div class="skill-icon"><i class="fa-solid fa-network-wired"></i></div>
+          <h3>Serveur</h3>
+        </div>
+        <p>Linux, Nginx, administration système, mise en production.</p>
+        <div class="skill-bar"><span style="--val:80%"></span></div>
+      </div>
+
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="skill-top">
+          <div class="skill-icon"><i class="fa-solid fa-plug"></i></div>
+          <h3>API</h3>
+        </div>
+        <p>Conception d'APIs REST, documentation, sécurité, intégrations tierces.</p>
+        <div class="skill-bar"><span style="--val:90%"></span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPÉRIENCE ============ -->
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <span class="section-eyebrow">Parcours</span>
+      <h2 class="section-title">Expérience</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-item" data-aos="fade-right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-badge">2023 — 2025</span>
+          <h3>Étudiant en Informatique — UPC</h3>
+          <p>Formation académique approfondie avec focus sur les architectures backend, les APIs et les infrastructures cloud. Projets pratiques en développement web et DevOps.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-badge">2025 — présent</span>
+          <h3>Développeur DevOps — Mokili</h3>
+          <p>Gestion des infrastructures cloud, déploiement en production, automatisation avec Docker et orchestration. Support technique pour une startup émergente en croissance rapide.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-right">
+        <div class="timeline-dot pulse"></div>
+        <div class="timeline-card highlight">
+          <span class="timeline-badge">Aujourd'hui</span>
+          <h3>Backend Developer</h3>
+          <p>Conception d'APIs et d'architectures backend scalables, en quête de nouveaux défis techniques.</p>
+        </div>
+      </div>
+    </div>
+    <p class="swipe-hint"><i class="fa-solid fa-arrows-left-right"></i> Glissez pour voir plus</p>
+  </div>
+</section>
+
+<!-- ============ PROJETS ============ -->
+<section class="projects" id="projets">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <span class="section-eyebrow">Réalisations</span>
+      <h2 class="section-title">Projets</h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="project-card tilt" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-media">
+          <div class="project-cover cover-1"><i class="fa-solid fa-list-check"></i></div>
+          <div class="project-overlay">
+            <a href="https://tasktodolissts.netlify.app/" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Démo</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Frontend</span>
+          <h3>Ma TodoList</h3>
+          <p>Gestionnaire de tâches avec filtrage en temps réel, persistance LocalStorage et interface responsive.</p>
+          <div class="project-stack"><span>React</span><span>TypeScript</span><span>LocalStorage</span></div>
+          <div class="project-links">
+            <a href="https://tasktodolissts.netlify.app/" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> Démo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card tilt" data-aos="fade-up" data-aos-delay="80">
+        <div class="project-media">
+          <div class="project-cover cover-2"><i class="fa-solid fa-ghost"></i></div>
+          <div class="project-overlay">
+            <a href="https://github.com/hnc450/ghost-composite" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Backend</span>
+          <h3>Ghost Framework</h3>
+          <p>Framework PHP modulaire : architecture MVC, routing avancé, injection de dépendances, QueryBuilder, protection CSRF.</p>
+          <div class="project-stack"><span>PHP</span><span>MVC</span><span>QueryBuilder</span></div>
+          <div class="project-links">
+            <a href="https://github.com/hnc450/ghost-composite" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Github</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card tilt" data-aos="fade-up" data-aos-delay="160">
+        <div class="project-media">
+          <div class="project-cover cover-3"><i class="fa-solid fa-car"></i></div>
+          <div class="project-overlay">
+            <a href="https://protectvim.com/" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Démo</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Full Stack</span>
+          <h3>Protect VIN</h3>
+          <p>Vérification de véhicules par VIN, plaque ou propriétaire, avec rapports PDF certifiés et intégrations API.</p>
+          <div class="project-stack"><span>PHP</span><span>PDF</span><span>MySQL</span></div>
+          <div class="project-links">
+            <a href="https://protectvim.com/" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> Démo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card tilt" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-media">
+          <div class="project-cover cover-4"><i class="fa-solid fa-music"></i></div>
+          <div class="project-overlay">
+            <a href="https://mololoplus.com/" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Démo</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Backend</span>
+          <h3>Mololo+</h3>
+          <p>Plateforme SaaS de gestion de carrière musicale : SmartLink, EPK automatique, booking, paiements, analytics.</p>
+          <div class="project-stack"><span>PHP MVC</span><span>MySQL</span><span>API REST</span></div>
+          <div class="project-links">
+            <a href="https://mololoplus.com/" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> Démo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card tilt" data-aos="fade-up" data-aos-delay="80">
+        <div class="project-media">
+          <div class="project-cover cover-5"><i class="fa-solid fa-user"></i></div>
+          <div class="project-overlay">
+            <a href="https://myprofile-folio.netlify.app/" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Démo</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Frontend</span>
+          <h3>Portfolio Personnel</h3>
+          <p>Portfolio interactif et responsive en vanilla JavaScript, navigation fluide et formulaire de contact.</p>
+          <div class="project-stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+          <div class="project-links">
+            <a href="https://myprofile-folio.netlify.app/" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> Démo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card tilt" data-aos="fade-up" data-aos-delay="160">
+        <div class="project-media">
+          <div class="project-cover cover-6"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+          <div class="project-overlay">
+            <a href="https://retraiteflow.pics/" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Démo</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Backend</span>
+          <h3>RetraiteFlow</h3>
+          <p>Application PHP MVC avec base MySQL, déployée via GitHub Actions et automatisation DevOps.</p>
+          <div class="project-stack"><span>PHP MVC</span><span>MySQL</span><span>GitHub Actions</span></div>
+          <div class="project-links">
+            <a href="https://retraiteflow.pics/" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> Démo</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="swipe-hint"><i class="fa-solid fa-arrows-left-right"></i> Glissez pour voir plus</p>
+  </div>
+</section>
+
+<!-- ============ PROCESSUS ============ -->
+<section class="process">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <span class="section-eyebrow">Méthodologie</span>
+      <h2 class="section-title">Comment je travaille</h2>
+    </div>
+
+    <div class="process-track">
+      <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+        <span class="process-num">01</span>
+        <h3>Discussion</h3>
+        <p>Comprendre vos besoins, vos contraintes et vos objectifs métier.</p>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="80">
+        <span class="process-num">02</span>
+        <h3>Analyse</h3>
+        <p>Définir l'architecture, le modèle de données et les APIs nécessaires.</p>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="160">
+        <span class="process-num">03</span>
+        <h3>Développement</h3>
+        <p>Écrire un code propre, testé et versionné, en itérations courtes.</p>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="240">
+        <span class="process-num">04</span>
+        <h3>Tests</h3>
+        <p>Valider la fiabilité, la sécurité et la performance avant livraison.</p>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="320">
+        <span class="process-num">05</span>
+        <h3>Livraison</h3>
+        <p>Déployer en production et assurer le suivi post-lancement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TÉMOIGNAGES ============ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <span class="section-eyebrow">Retours</span>
+      <h2 class="section-title">Témoignages</h2>
+    </div>
+
+    <div class="swiper testimonial-swiper" data-aos="fade-up">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Henock a livré une API robuste et bien documentée, avant les délais. Sa rigueur sur l'architecture nous a fait gagner des mois."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">CM</div>
+              <div><strong>Chef de Projet</strong><span>Startup, Kinshasa</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Un vrai souci du détail côté backend comme frontend. Nos déploiements sont désormais automatisés et fiables."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">RM</div>
+              <div><strong>Responsable Technique</strong><span>Mokili</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Communication claire, code propre, et une vraie compréhension des enjeux produit. Je recommande sans hésiter."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">AK</div>
+              <div><strong>Product Owner</strong><span>Projet freelance</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <span class="section-eyebrow">Parlons-en</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+
+    <div class="contact-card" data-aos="fade-up">
+      <div class="contact-info">
+        <h3>Discutons de votre projet</h3>
+        <p>Une idée, une API à construire, une infrastructure à automatiser ? Écrivez-moi.</p>
+
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:henoctumonakiese@gmail.com">henoctumonakiese@gmail.com</a></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+243896500709">+243 896 500 709</a></li>
+          <li><i class="fa-solid fa-location-dot"></i><span>Kinshasa, RDC</span></li>
+        </ul>
+
+        <div class="contact-socials">
+          <a href="https://github.com/hnc450" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+          <a href="https://gitlab.com/hnc450" target="_blank" rel="noopener"><i class="fa-brands fa-gitlab"></i></a>
+          <a href="https://www.linkedin.com/in/henoc-tumonakiese-9192a1395" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="fName" name="name" placeholder=" " required>
+            <label for="fName">Nom complet</label>
+            <span class="form-error" id="errName"></span>
+          </div>
+          <div class="form-group">
+            <input type="email" id="fEmail" name="email" placeholder=" " required>
+            <label for="fEmail">Adresse email</label>
+            <span class="form-error" id="errEmail"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" id="fSubject" name="subject" placeholder=" " required>
+          <label for="fSubject">Sujet</label>
+          <span class="form-error" id="errSubject"></span>
+        </div>
+        <div class="form-group">
+          <textarea id="fMessage" name="message" rows="4" placeholder=" " required></textarea>
+          <label for="fMessage">Votre message</label>
+          <span class="form-error" id="errMessage"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit magnetic">
+          <span class="btn-text">Envoyer le message</span>
+          <span class="btn-loading"><i class="fa-solid fa-circle-notch fa-spin"></i></span>
+          <i class="fa-solid fa-paper-plane btn-icon"></i>
+        </button>
+        <p class="form-success" id="formSuccess"><i class="fa-solid fa-circle-check"></i> Message envoyé avec succès ! Je vous répondrai rapidement.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="#accueil" class="footer-logo">
+      <span class="logo-bracket">&lt;</span>H<span class="logo-dot">.</span>T<span class="logo-bracket">/&gt;</span>
+    </a>
+    <p class="footer-copy">© <span id="year"></span> Henock Tumonakiese — Backend Developer. Tous droits réservés.</p>
+    <div class="footer-socials">
+      <a href="https://github.com/hnc450" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://gitlab.com/hnc450" target="_blank" rel="noopener" aria-label="GitLab"><i class="fa-brands fa-gitlab"></i></a>
+      <a href="https://www.linkedin.com/in/henoc-tumonakiese-9192a1395" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+    <button class="back-to-top" id="backToTop" aria-label="Retour en haut"><i class="fa-solid fa-arrow-up"></i></button>
+  </div>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+<script src="script.js"></script>
+</body>
 </html>
